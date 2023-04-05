@@ -10,23 +10,35 @@ module.exports = {
   ],
   theme: {
     colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      "black": "#000000",
-      "smoky-black": "#171611",
-      "eerie-black": "#20201D",
-      "jet-black": "#292929",
-      "dark-pastel-green": "#53B04E",
-      "pistachio-green": "#99D665",
-      "mindaro-green": "#DDFFAB",
-      "steel-pink": "#C13DDA",
-      "muave-pink": "#D47BD9",
-      "lavender-pink": "#E6B9D7",
-      "gray": "#808080",
-      "silver": "#C0C0C0",
-      "white": "#FFFFFF",
+      "primary": {
+        "50": "#e2f2ff",
+        "100": "#b9dfff",
+        "200": "#87cbff",
+        "300": "#49b6ff",
+        "400": "#00a5ff",
+        "500": "#0095ff",
+        "600": "#0085ff",
+        "700": "#0072ff",
+        "800": "#025fee",
+        "900": "#1e3bce"
+      },
+      "secondary": {
+        "50": "#f9f9f9",
+        "100": "#f1f1f1",
+        "200": "#e8e8e8",
+        "300": "#d8d8d8",
+        "400": "#b4b4b4",
+        "500": "#949494",
+        "600": "#6b6b6b",
+        "700": "#585858",
+        "800": "#3a3a3a",
+        "900": "#191919"
+      }
+      
     },
-    extend: {},
+    extend: {
+        
+    },
   },
   plugins: [],
 }

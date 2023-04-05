@@ -37,7 +37,7 @@ export default function MatrixCanvas({ scroll } : { scroll: number }) {
             ctx.fillRect(0, 0, w, h);
           
             // Set color to green and font to 15pt monospace in the drawing context
-            ctx.fillStyle = '#C13DDA';
+            ctx.fillStyle = '#0095ff';
             ctx.font = '15pt monospace';
           
             // for each column put a random character at the end

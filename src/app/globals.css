@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fade-in {
+    transition: opacity .5s ease-in-out, margin-top .5s ease-in-out;
+    animation: fade-in;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        margin-top: 50px;
+    }
+    100% {
+        
+        margin-top: 0px;
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    transition: opacity .5s ease-in-out, margin-top .5s ease-in-out;
+    animation: fade-out;
+}
+
+@keyframes fade-out {
+    0% {
+        margin-top: 0px;
+        opacity: 1;
+    }
+    100% {
+        
+        opacity: 0;
+        margin-top: 50px;
+    }
+}
+
