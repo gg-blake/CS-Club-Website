@@ -17,6 +17,7 @@ import CardCarousel from './components/gpt-carousel';
 import GenericParagraph from './components/generic-paragraph';
 import GenericSubsection from './components/generic-subsection';
 import ProfileCard from './components/profile-card';
+import GenericButton from './components/generic-button';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -89,7 +90,11 @@ export default function Home() {
             
           </div>
         </GenericSubsection>
-        <GenericSection title="Upcoming Events"></GenericSection>
+        <GenericSection title="Upcoming Events">
+          <GenericButton className='w-[30px] h-[30px] p-4 rounded-sm'>
+          This is a test
+          </GenericButton>
+        </GenericSection>
         <GenericSection title="Competitions"></GenericSection>
         <GenericSection title="Developer Insights"></GenericSection>
       </div>

@@ -41,7 +41,7 @@ const GenericSection = React.forwardRef(({ children , title }: { children?: JSX.
                         { title }
                     </h1>
                 </div>
-                <div ref={childrenElementRef} className="transition-all h-auto">
+                <div ref={childrenElementRef} className="transition-all h-auto flex">
                     { children }
                 </div>
             </div>
