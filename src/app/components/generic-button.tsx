@@ -6,10 +6,10 @@ const GenericButton = React.forwardRef(({ children , className }: { children? : 
     
     return (
         <>
-        <div ref={thisElementRef} className={`bg-secondary-800 hover:bg-secondary-700 hover:scale-[105%] transition-all z-30 ${ className }`}>
+        <div ref={thisElementRef} className={`peer bg-secondary-800 hover:bg-secondary-700 hover:scale-[105%] transition-all z-30 ${ className }`}>
             { children }
         </div>
-        <div className={`bg-primary-500 transition-all absolute z-20 hover:rotate-12 hover:scale-[110%] ${ className }`} />
+        
         </>
     )
 });

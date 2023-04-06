@@ -6,18 +6,12 @@ import Splash from './sections/splash'
 import styles from './page.module.css'
 import GenericSection from './components/generic-section';
 import useEventListener from '@/hooks/useEventListener';
-import ImageCarousel from './components/image-carousel';
-//import Image0 from 'src/app/sections/umb.png';
-import Image0 from 'C:/Users/Blake/Music/More Life/cover.png';
-import Image1 from 'C:/Users/Blake/Music/Kanye West - The Life Of Pablo (June Update) [FLAC]/Cover.jpg';
-import Image2 from 'C:/Users/Blake/Music/Nothing Was the Same/cover.png';
-import Image3 from 'C:/Users/Blake/Music/Give Or Take/Giveon - Give Or Take.jpg';
-import Image4 from 'C:/Users/Blake/Music/[2021] Nurture [CD FLAC]/cover.jpg';
-import CardCarousel from './components/gpt-carousel';
 import GenericParagraph from './components/generic-paragraph';
 import GenericSubsection from './components/generic-subsection';
 import ProfileCard from './components/profile-card';
 import GenericButton from './components/generic-button';
+import About from './sections/about';
+import IconButton from './components/icon-button';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -45,26 +39,7 @@ export default function Home() {
       </div>
       <div className="w-screen h-auto min-h-screen bg-gradient-to-t from-black to-transparent z-20">
         <GenericSection ref={aboutSectionRef} title="About Us">
-          <div className='px-4 flex flex-col md:grid md:grid-cols-2 gap-4 mt-4'>
-            <div>
-              <GenericParagraph className='text-secondary-200 text-lg'>
-              Welcome to the Computer Science Club section of the UMass Boston club webpage! Here, you can find information about our club and what we do. Our club is dedicated to fostering a community of computer science enthusiasts, and we welcome students of all levels of experience. We offer opportunities for members to network, learn, and grow their skills.
-              </GenericParagraph>
-              <br />
-              <GenericParagraph className='text-secondary-200 text-lg'>
-              On this section of the webpage, you can find information about our upcoming events, meetings, and workshops. We also provide resources for members, such as coding tutorials, job and internship postings, and information about industry trends. If you're interested in joining our club or attending one of our events, please feel free to reach out to us through the contact information provided. We look forward to meeting you and sharing our passion for computer science!
-              </GenericParagraph>
-              
-            </div>
-            <div className="w-full h-full flex justify-center ">
-            <ImageCarousel 
-            className={"w-[150px] mt-[70px]"} 
-            images={[Image0, Image1, Image2, Image3, Image4]} 
-            scale={10} 
-            offsetY={30}
-            />
-            </div>
-          </div>
+          <About />
         </GenericSection>
         <GenericSubsection title="Members">
           <div className='w-full flex-shrink h-auto min-h-[40vh] flex flex-row gap-5 px-5'>
@@ -83,6 +58,12 @@ export default function Home() {
             </ProfileCard>
             <div className='w-2 h-full bg-secondary-500'></div>
             <ProfileCard name="Elon Musk" title="Treasurer">
+              <div className="w-auto h-[40px] flex flex-row gap-2">
+                <IconButton src={"https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"} />
+                <IconButton src={"https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"} />
+                <IconButton src={"https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"} />
+              </div>
+              
               <GenericParagraph className='text-secondary-200 text-lg'>
               a business magnate and investor. He is the founder, CEO and chief engineer of SpaceX; angel investor, CEO and product architect of Tesla, Inc.; owner and CEO of Twitter, Inc.; founder of the Boring Company; co-founder of Neuralink and OpenAI; and president of the philanthropic Musk Foundation. With an estimated net worth of around $192 billion as of March 27, 2023, primarily from his ownership stakes in Tesla and SpaceX, Musk is the second-wealthiest person in the world, according to both the Bloomberg Billionaires Index and Forbes's real-time billionaires list.
               </GenericParagraph>
@@ -91,9 +72,10 @@ export default function Home() {
           </div>
         </GenericSubsection>
         <GenericSection title="Upcoming Events">
-          <GenericButton className='w-[30px] h-[30px] p-4 rounded-sm'>
+          <GenericButton className='w-auto h-[30px] p-4 rounded-sm flex justify-center items-center'>
           This is a test
           </GenericButton>
+          
         </GenericSection>
         <GenericSection title="Competitions"></GenericSection>
         <GenericSection title="Developer Insights"></GenericSection>

@@ -33,7 +33,7 @@ const GenericSection = React.forwardRef(({ children , title }: { children?: JSX.
 
     return (
         <>
-        <div ref={thisElementRef} className="relative w-full h-auto min-h-screen z-50 bg-gradient-b from-transparent to-secondary-900 px-5 pt-[150px] flex ">
+        <div ref={thisElementRef} className="relative w-full border-t-[1px] border-dashed border-secondary-500 h-auto min-h-[50vh] z-50 bg-gradient-b from-transparent to-secondary-900 px-5 pt-[50px] flex ">
             <div ref={titleElementUnderlineRef} className="w-0 h-[5px] mt-[50px] bg-primary-500 rounded-sm"></div>
             <div className="h-auto flex-shrink">
                 <div className="flex w-full h-auto items-center">
