@@ -21,7 +21,7 @@ export default function About() {
             <div className="w-full h-full flex justify-center ">
             <ImageCarousel 
             className={"flex-grow max-w-[150px] mt-[70px]"} 
-            images={[Image0, Image1, Image2, Image3, Image4]} 
+            items={[Image0, Image1, Image2, Image3, Image4]} 
             scale={10} 
             offsetY={30}
             />

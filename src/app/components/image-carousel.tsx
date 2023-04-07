@@ -5,10 +5,12 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 import useEventListener from '@/hooks/useEventListener';
 
 import "../globals.css";
+import { FC } from 'react';
+import Carousel from './carousel-types';
 
 
-export default function ImageCarousel({ className, images , scale=3 , offsetY=40, duration=3000, animationDuration=200 }: { className : string , images : StaticImageData[] , scale? : number , offsetY? : number, duration? : number , animationDuration? : number } ) {
-    const [items, setItems] = useState(images);
+const ImageCarousel: FC<Carousel<StaticImageData[]>> = ({ className, items , scale=3 , offsetY=40, duration=3000, animationDuration=200 } ) => {
+    const [imageItems, setImageItems] = useState(items);
     const [thisElementRefCallback, enableAnimations] = useAutoAnimate();
     const itemRef = useRef<HTMLLIElement>(null);
     
@@ -18,21 +20,21 @@ export default function ImageCarousel({ className, images , scale=3 , offsetY=40
     }, []);
 
     const cycle = () => {
-        setItems(prevItems => {
-            const first = prevItems[0];
-            const rest = prevItems.slice(1);
+        setImageItems((prevImageItems: StaticImageData[]) => {
+            const first = prevImageItems[0];
+            const rest = prevImageItems.slice(1);
             return [...rest, first];
         })
     };
 
     return (
         <ul ref={thisElementRefCallback} className={`${className} flex flex-row-reverse `}>
-            {items.map(
-            (item, index) => {
+            {imageItems.map(
+            (image, index) => {
                 return (
-                    <li ref={itemRef} key={item.src} className={`w-full h-full`}>
-                        <div style={{transform: `translateY(${offsetY * index}px) scale(${scale + index * 0.8})`, animationDelay: `${duration - animationDuration + 30}ms`, animationDuration: `${animationDuration}ms`, animationTimingFunction: "ease-in-out"}} className={`w-full h-auto shadow-md rounded-md  ${index == 0 ? `fade-out opacity-1` : index == (images.length - 1) ? `fade-in opacity-0` : "transition-all"}`}>
-                            <img src={item.src} alt={item.src} className='rounded-[0.5px]' />
+                    <li ref={itemRef} key={image.src} className={`w-full h-full`}>
+                        <div style={{transform: `translateY(${offsetY * index}px) scale(${scale + index * 0.8})`, animationDelay: `${duration - animationDuration + 30}ms`, animationDuration: `${animationDuration}ms`, animationTimingFunction: "ease-in-out"}} className={`w-full h-auto shadow-md rounded-md  ${index == 0 ? `fade-out opacity-1` : index == (imageItems.length - 1) ? `fade-in opacity-0` : "transition-all"}`}>
+                            <img src={image.src} alt={image.src} className='rounded-[0.5px]' />
                         </div>
                     </li>
                 )
@@ -41,3 +43,5 @@ export default function ImageCarousel({ className, images , scale=3 , offsetY=40
         </ul>
     )
 }
+
+export default ImageCarousel;
