@@ -1,6 +1,7 @@
 'use client';
 
 import { Inter } from 'next/font/google'
+import Head from 'next/head';
 import { useEffect , useState , useRef } from 'react'
 import Splash from './sections/splash' 
 import styles from './page.module.css'
@@ -31,6 +32,9 @@ export default function Home() {
   return (
     <>
     <div className='bg-secondary-900 overflow-x-hidden'>
+      <head>
+        <title>CS Club - UMass Boston</title>
+      </head>
       <div id="tree" className='w-[5px] h-0 z-50 absolute left-5 rounded-md bg-primary-500'>
         <div className='absolute bottom-0 w-full max-h-full h-5 bg-gradient-to-b from-primary-500 to-secondary-900'></div>
       </div>
