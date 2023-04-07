@@ -1,10 +1,10 @@
 import GenericParagraph from "../components/generic-paragraph";
 import ImageCarousel from "../components/image-carousel";
-import Image0 from 'C:/Users/Blake/Music/More Life/cover.png';
-import Image1 from 'C:/Users/Blake/Music/Kanye West - The Life Of Pablo (June Update) [FLAC]/Cover.jpg';
-import Image2 from 'C:/Users/Blake/Music/Nothing Was the Same/cover.png';
-import Image3 from 'C:/Users/Blake/Music/Give Or Take/Giveon - Give Or Take.jpg';
-import Image4 from 'C:/Users/Blake/Music/[2021] Nurture [CD FLAC]/cover.jpg';
+import Image0 from '../images/mm_food.jpg';
+import Image1 from '../images/good_kid_maad_city.jpg';
+import Image2 from '../images/good_kid_maad_city_deluxe.jpg';
+import Image3 from '../images/good_kid_maad_city_deluxe_2.png';
+import Image4 from '../images/ambitionz_az_a_ridah.jpg';
 
 export default function About() {
     return (
