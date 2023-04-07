@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <>
-    <div className='bg-secondary-900'>
+    <div className='bg-secondary-900 overflow-x-hidden'>
       <div id="tree" className='w-[5px] h-0 z-50 absolute left-5 rounded-md bg-primary-500'>
         <div className='absolute bottom-0 w-full max-h-full h-5 bg-gradient-to-b from-primary-500 to-secondary-900'></div>
       </div>
