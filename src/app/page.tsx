@@ -16,6 +16,7 @@ import IconButton from './components/icon-button';
 import SLEEPYJOE from './sections/sleepyjoe.jpg';
 import JORDAN from './sections/jordan.jpg';
 import ELON from './sections/elon.jpg';
+import Events from './sections/events';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -83,10 +84,8 @@ export default function Home() {
             
           </div>
         </GenericSubsection>
-        <GenericSection title="Upcoming Events">
-          <GenericButton className='w-auto h-[30px] p-4 rounded-sm flex justify-center items-center'>
-          This is a test
-          </GenericButton>
+        <GenericSection title="Events">
+          <Events />
           
         </GenericSection>
         <GenericSection title="Competitions"></GenericSection>
