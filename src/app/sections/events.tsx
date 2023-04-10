@@ -1,5 +1,4 @@
 import { FC , useEffect, useRef , useState , useContext } from "react";
-import EventCarousel from "../components/event-carousel";
 import EventDeck from "../components/event-deck";
 
 interface EventListing {
