@@ -5,10 +5,12 @@ import Image1 from '../images/good_kid_maad_city.jpg';
 import Image2 from '../images/good_kid_maad_city_deluxe.jpg';
 import Image3 from '../images/good_kid_maad_city_deluxe_2.png';
 import Image4 from '../images/ambitionz_az_a_ridah.jpg';
+import GlitchText from "../components/glitch-text";
 
 export default function About() {
     return (
         <div className='px-4 flex flex-col md:grid md:grid-cols-2 gap-4 mt-4'>
+            
             <div>
               <GenericParagraph className='text-secondary-200 text-lg'>
               Welcome to the Computer Science Club section of the UMass Boston club webpage! Here, you can find information about our club and what we do. Our club is dedicated to fostering a community of computer science enthusiasts, and we welcome students of all levels of experience. We offer opportunities for members to network, learn, and grow their skills.

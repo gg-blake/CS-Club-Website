@@ -37,7 +37,7 @@ const EventDeckCard: FC<EventListing> = ({ title, description, date, time, locat
     const {user, setUser} = useContext(UserContext);
 
     return (
-        <div className="w-[300px] h-[300px] py-2 px-3 border-[2px] border-secondary-600 border-opacity-50 rounded-[4px] gap-0 text-base bg-secondary-900 shadow-md relative z-20 overflow-clip flex flex-col">
+        <div className="w-[300px] h-[300px] py-2 px-3 border-[2px] border-secondary-600 border-opacity-50 rounded-[4px] gap-0 text-base bg-transparent shadow-md relative z-20 overflow-clip flex flex-col">
             <h2  className={`text-2xl font-semibold text-secondary-200`}>{title}</h2>
             <span className="font-light whitespace-nowrap w-auto flex flex-row items-center gap-2 pl-[5px]">
                 <img src={CALENDAR_ICON.src} className="w-[15px] h-[15px] mt-[2px]" alt="calendar.png" />
@@ -52,7 +52,7 @@ const EventDeckCard: FC<EventListing> = ({ title, description, date, time, locat
             </span>
             <div className="w-[92%] h-[2px] rounded-full my-3 bg-secondary-800 self-center mx-2" />
             <p className="text-secondary-200 opacity-50 leading-tight font-light overflow-y-scroll pr-2">{ description }</p>
-            <div onClick={() => console.log(user)} className="w-full h-[70px] bg-secondary-900">
+            <div onClick={() => console.log(user)} className="w-full h-[70px] ">
                 
             </div>
         </div>
@@ -61,7 +61,7 @@ const EventDeckCard: FC<EventListing> = ({ title, description, date, time, locat
 
 const EventDeck: FC<EventDeckProps> = ({ className="h-auto" , items , cardWidth , cardHeight , duration=3000 , animationDuration=200 }) => {
     return (
-        <div className={`flex absolute h-auto flex-row gap-5 pr-[30px] ${className}`}>
+        <div className={`flex absolute bg-transparent h-auto flex-row gap-5 pr-[30px] ${className}`}>
             {
             items.map( (event: EventListing, index: number) => <EventDeckCard key={"EventDeckCard-" + index} {...event} /> )
             }

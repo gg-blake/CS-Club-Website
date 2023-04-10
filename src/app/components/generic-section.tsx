@@ -1,6 +1,7 @@
 import React, { useRef , useEffect, ForwardedRef } from "react";
 import useEventListener from "@/hooks/useEventListener";
 import useForwardRef from "@/hooks/useForwardRef";
+import GlitchText from "./glitch-text";
 
 const GenericSection = React.forwardRef(({ children , title }: { children?: JSX.Element[] | JSX.Element, title: string }, ref: ForwardedRef<HTMLHeadingElement>) => {
     const thisElementRef = useForwardRef<HTMLHeadingElement>(ref);
@@ -33,7 +34,9 @@ const GenericSection = React.forwardRef(({ children , title }: { children?: JSX.
             <div className="h-auto flex-grow">
                 <div className="flex w-full h-auto items-center">
                     <h1 ref={titleElementRef} className="flex-shrink text-8xl inline-block text-secondary-100 pl-4 font-semibold">
-                        { title }
+                        <div className='relative'>
+                            <GlitchText className=" bg-transparent text-secondary-200 text-8xl font-semibold">{ title }</GlitchText>
+                        </div>
                     </h1>
                 </div>
                 <div ref={childrenElementRef} className="transition-all h-auto flex">

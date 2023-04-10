@@ -18,6 +18,7 @@
     "next": "^13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-teffex": "^1.0.5",
     "simple-parallax-js": "^5.6.2",
     "typescript": "5.0.2"
   },

@@ -3,6 +3,7 @@ import MatrixCanvas from './matrix-canvas';
 import Logo from "./umb.png";
 import Image from 'next/image';
 import useEventListener from '@/hooks/useEventListener';
+import GlitchText from '../components/glitch-text';
 
 function NavBar({ scroll }: { scroll: number }) {
     return (
@@ -36,19 +37,6 @@ export default function Splash() {
         let shrink = 97;
         setScroll(position);
         if (splashElement) {
-            /*
-            if (position > 100) {
-                el.style.padding = `${(100 - shrink) / 2}vw ${(100 - shrink) / 2}vh` ;
-                el.style.width = `${shrink}vw`;
-                el.style.height = `${shrink}vh`;
-            } 
-            else {
-                el.style.padding = "0px";
-                el.style.width = "100vw";
-                el.style.height = "100vh";
-            }
-            */
-
             splashElement.style.transform = `translateY(${position * 0.5}px)`;
             
         }
@@ -73,8 +61,10 @@ export default function Splash() {
                     src={Logo}
                     alt="UMass Boston Logo"
                     />
-                    <h1 className='flex items-center text-8xl text-secondary-100 font-bold leading-none'>CS CLUB</h1>
-
+                    <div className='relative'>
+                        <GlitchText className=" bg-transparent text-secondary-200 text-8xl font-bold">CS CLUB</GlitchText>
+                    </div>
+                    
                 </span>
                 
                 <p className='text-xl text-secondary-100 px-2 py-2'>UMass Boston's official center for technology-driven students.</p>

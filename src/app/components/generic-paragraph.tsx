@@ -1,3 +1,5 @@
+import { Glitch } from "react-teffex";
+
 export default function GenericParagraph({ children , className } : { children? : string , className? : string }) {
     return (
         <div className={`w-full h-auto flex gap-4 ${className}`}>

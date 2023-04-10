@@ -40,15 +40,6 @@ const testEvents: EventListing[] = [
     },
 ];
 
-function Elipsis() {
-    // make an svg representation of the elipsis
-    return (
-        <svg className="w-4 h-4 scale-150 text-secondary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M4 10a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0z" clipRule="evenodd" />
-        </svg>
-    )
-}
-
 function EventsSection({ children , className , title }: { children? : JSX.Element , className?: string , title: string }) {
     const scrollElementRef = useRef<HTMLDivElement>(null);
     const [isEnd, setIsEnd] = useState<boolean>(false);
@@ -73,32 +64,17 @@ function EventsSection({ children , className , title }: { children? : JSX.Eleme
 
     return (
         <>
-        <h1 className="w-auto h-auto text-3xl font-bold">{ title }</h1>
-        <div className={`w-full h-[320px] relative flex ${ className }`}>
-            <div ref={scrollElementRef} className="w-full h-full py-2 relative overflow-x-scroll overflow-y-visible flex z-10">
+        
+        <div className={`w-full h-[320px] relative flex z-20 ${ className }`}>
+            <h1 className="absolute w-full h-full flex items-center text-[18rem] bg-transparent font-bold text-secondary-800 z-10">{ title }</h1>
+            <div ref={scrollElementRef} className="w-full h-full py-2 relative overflow-x-scroll overflow-y-visible flex">
                 <EventDeck items={testEvents} />
             </div>
             
-            <div className={`w-1/5 h-[calc(100%_-_10px)] absolute top-0 right-0 ${!isEnd ? "bg-gradient-to-l from-secondary-900 via-secondary-900 to-transparent" : "bg-transparent"} z-20 flex items-center justify-end`}>
+            <div className={`w-1/5 h-[calc(100%_-_10px)] absolute top-0 right-0 ${!isEnd ? "bg-gradient-to-l from-secondary-900 via-secondary-900 to-transparent" : "bg-transparent"} z-30 flex items-center justify-end`}>
                 { children }
             </div>
             
-        </div>
-        </>
-    )
-}
-
-function EventsColumnsTitles() {
-    return (
-        <>
-        <div className="w-auto h-auto left-0 z-20">
-        Soon
-        </div>
-        <div className="w-auto h-auto left-0 z-20">
-        Upcoming
-        </div>
-        <div className="w-auto h-auto left-0  z-20 ">
-        Past
         </div>
         </>
     )
@@ -112,7 +88,7 @@ export default function Events() {
             <EventsSection title="Past" />
             {isSelect && <EventsSection title="Upcoming" />}
             {isSelect && <EventsSection title="Past" />}
-            <div onClick={() => setIsSelect(!isSelect)} className="w-auto h-auto text-xl text-normal">
+            <div onClick={() => setIsSelect(!isSelect)} className="w-auto h-auto text-xl text-normal z-20">
                 {isSelect ? "Hide future and past events" : "Show future and past events"}
             </div>
         </div>
