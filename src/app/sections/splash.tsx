@@ -3,6 +3,7 @@ import MatrixCanvas from './matrix-canvas';
 import Logo from "./umb.png";
 import Image from 'next/image';
 import useEventListener from '@/hooks/useEventListener';
+import GlitchText from '../components/glitch-text';
 
 function NavBar({ scroll }: { scroll: number }) {
     return (
@@ -36,19 +37,6 @@ export default function Splash() {
         let shrink = 97;
         setScroll(position);
         if (splashElement) {
-            /*
-            if (position > 100) {
-                el.style.padding = `${(100 - shrink) / 2}vw ${(100 - shrink) / 2}vh` ;
-                el.style.width = `${shrink}vw`;
-                el.style.height = `${shrink}vh`;
-            } 
-            else {
-                el.style.padding = "0px";
-                el.style.width = "100vw";
-                el.style.height = "100vh";
-            }
-            */
-
             splashElement.style.transform = `translateY(${position * 0.5}px)`;
             
         }
@@ -61,27 +49,34 @@ export default function Splash() {
 
     return (
         <>
-        {scroll > 650 ? <NavBar scroll={scroll}/> : <></>}
-        
-        <div id="splash" className={`absolute z-10 top-0 w-screen h-screen flex flex-col justify-center`}>
-            <MatrixCanvas scroll={scroll} />
-            {scroll > 650 ? <></> : <NavBar scroll={scroll}/>}
-            <div id="title" className='my-2 px-3 z-10'>
-                <span className='flex items-center gap-[35px] ml-[10px] flex-wrap'>
-                    <Image
-                    className='pt-[10px] h-[80px] w-auto'
-                    src={Logo}
-                    alt="UMass Boston Logo"
-                    />
-                    <h1 className='flex items-center text-8xl text-secondary-100 font-bold leading-none'>CS CLUB</h1>
-
-                </span>
-                
-                <p className='text-xl text-secondary-100 px-2 py-2'>UMass Boston's official center for technology-driven students.</p>
-            </div>
+        <head>
+        <title>CS Club - UMass Boston</title>
+        </head>
+        <div className='z-0 relative h-screen overflow-clip '>
+            {scroll > 650 ? <NavBar scroll={scroll}/> : <></>}
             
-        </div>
-        </>
+            <div id="splash" className={`absolute z-10 top-0 w-screen h-screen flex flex-col justify-center`}>
+                <MatrixCanvas scroll={scroll} />
+                {scroll > 650 ? <></> : <NavBar scroll={scroll}/>}
+                <div id="title" className='my-2 px-3 z-10'>
+                    <span className='flex items-center gap-[35px] ml-[10px] flex-wrap'>
+                        <Image
+                        className='pt-[10px] h-[80px] w-auto'
+                        src={Logo}
+                        alt="UMass Boston Logo"
+                        />
+                        <div className='relative'>
+                            <GlitchText className=" bg-transparent text-secondary-200 text-8xl font-bold">CS CLUB</GlitchText>
+                        </div>
+                        
+                    </span>
+                    
+                    <p className='text-xl text-secondary-100 px-2 py-2'>UMass Boston's official center for technology-driven students.</p>
+                </div>
+                
+            </div>
+            </div>
+            </>
         
     )
 }
