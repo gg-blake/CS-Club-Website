@@ -8,7 +8,7 @@ import ProfileCard from './components/profile-card';
 import About from './sections/about';
 import Events from './components/events';
 import UserContext from './context/user-context';
-import Announcements from './sections/announcements';
+import Announcements from './components/announcements';
 import Timeline from './components/timeline';
 import Officers from './sections/officers';
 
@@ -18,9 +18,9 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const aboutSectionRef = useRef<HTMLHeadingElement>(null);
   const [user, setUser] = useState({
-    username: "test_user123",
-    password: "password123",
-    email: "john.doe001@umb.edu",
+    username: null,
+    password: null,
+    email: null,
     sessionStartDate: new Date(Date.now()),
   })
   const value = { user, setUser };
@@ -37,9 +37,9 @@ export default function Home() {
 
   return (
     <UserContext.Provider value={value}>
-      <div className='bg-secondary-900 overflow-x-hidden'>
+      <div className={`bg-secondary-900 overflow-x-hidden w-screen select-none ${inter.className}`}>
         <Splash />
-        <Timeline className='w-screen h-auto min-h-screen bg-gradient-to-t from-black to-transparent z-20' titles={["About Us", "Announcements",  "Events", "Officers"]}>
+        <Timeline className='w-full h-auto min-h-screen bg-gradient-to-t from-black to-transparent z-20' titles={["About Us", "Announcements",  "Events", "Officers"]}>
           <About />
           <Announcements />
           <Events />
