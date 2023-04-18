@@ -1,7 +1,11 @@
-import { FC , useEffect, useRef , useState , useContext } from "react";
+import { FC , useEffect, useRef , useState , useContext , RefObject , ChangeEvent } from "react";
 import UserContext from "../context/user-context";
 import CALENDAR_ICON from "./../../../public/images/calendar.png";
 import "./module.event-deck.css";
+import TimelineMini from "./timeline-mini";
+import GenericTimestamp from "./generic-timestamp";
+import GenericParagraph from "./generic-paragraph";
+import GenericButton from "./generic-button";
 
 interface EventListing {
     title: string;
@@ -9,6 +13,11 @@ interface EventListing {
     date: string;
     time: string;
     location: string;
+}
+
+interface LoginPromptState {
+    isLoginPrompt: boolean;
+    setLoginPrompt: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const testEvents: EventListing[] = [
@@ -51,85 +60,168 @@ function PinIcon({ className } : { className? : string }) {
     )
 }
 
-const Event: FC<EventListing> = ({ title, description, date, time, location }) => {
+const Event: FC<EventListing & LoginPromptState> = ({ title, description, date, time, location, isLoginPrompt, setLoginPrompt }) => {
     const [isSelect, setIsSelect] = useState<boolean>(false);
+    const rsvpButtonRef = useRef<HTMLButtonElement>(null);
     const {user, setUser} = useContext(UserContext);
 
+    const rsvp = () => {
+        if (!rsvpButtonRef.current) return;
+        rsvpButtonRef.current.style.borderColor = "#29ff4c";
+        console.log(`RSVP'd to ${title} at ${location} on ${date} at ${time}`);
+    }
+
     return (
-        <div className="w-[300px] h-[300px] py-2 px-3 border-[2px] border-secondary-600 border-opacity-50 rounded-[4px] gap-0 text-base bg-transparent shadow-md relative z-20 overflow-clip flex flex-col">
-            <h2  className={`text-2xl font-semibold text-secondary-200`}>{title}</h2>
-            <span className="font-light whitespace-nowrap w-auto flex flex-row items-center gap-2 pl-[5px]">
-                <img src={CALENDAR_ICON.src} className="w-[15px] h-[15px] mt-[2px]" alt="calendar.png" />
-                <h3 className="inline-block">{ date }</h3>
-                <div className="w-[5px] h-[5px] bg-secondary-200 rounded-full mt-[2px]" />
-                <h3 className="inline-block">{ time }</h3>
-            </span>
-            <span className="font-light whitespace-nowrap w-auto flex flex-row items-center gap-2">
-                <PinIcon className="stroke-secondary-200 fill-none scale-[80%]" />
-                <h3 className="inline-block">{ location }</h3>
-                
-            </span>
-            <div className="w-[92%] h-[2px] rounded-full my-3 bg-secondary-800 self-center mx-2" />
-            <p className="text-secondary-200 opacity-50 leading-tight font-light overflow-y-scroll pr-2">{ description }</p>
-            <div onClick={() => console.log(user)} className="w-full h-[70px] ">
-                
+        <div className="w-full h-auto grid grid-rows-[auto_auto_1fr] lg:grid-cols-[auto_auto_1fr] mb-[25px] gap-[3px] text-base bg-transparent relative z-20">
+            <div className="w-auto min-w-[18vw] h-auto flex flex-col">
+                <h2  className={`text-2xl font-semibold text-secondary-200 w-full leading-none my-1`}>{title}</h2>
+                <GenericTimestamp className="pl-[5px] font-thin" date={date} time={time} icon={true} />
+                <span className="font-thin whitespace-nowrap w-auto flex flex-row items-center gap-2">
+                    <PinIcon className="stroke-secondary-200 fill-none scale-[80%]" />
+                    <h3 className="inline-block">{ location }</h3>
+                </span>
+                <GenericButton ref={rsvpButtonRef} onClick={() => !user.username ? setLoginPrompt(true) : rsvp()}>
+                { !user.username ? <a href="#login" >Login to RSVP</a> : "RSVP" }
+                </GenericButton>
             </div>
+            <div className="hidden lg:visible lg:flex w-[2px] h-[92%] mt-3 my-3 mx-2 rounded-full bg-secondary-800 self-center  " />
+            <GenericParagraph className="text-secondary-200 text-[.95rem] md:text-[1.1rem] flex-shrink opacity-50 hover:opacity-100 transition-opacity leading-tight font-light overflow-y-scroll  pr-[100px]">{ description }</GenericParagraph>
         </div>
     )
 }
 
-function EventsSection({ children , className , title }: { children? : JSX.Element , className?: string , title?: string }) {
-    const scrollElementRef = useRef<HTMLDivElement>(null);
-    const [isEnd, setIsEnd] = useState<boolean>(false);
+interface LoginState {
+    isLoginPrompt: boolean;
+    setLoginPrompt: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface RegisterDetails {
+    username: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+}
+
+interface LoginDetails {
+    username: string;
+    password: string;
+}
+
+const Login: FC<LoginState> = ({ isLoginPrompt, setLoginPrompt }) => {
+    const thisElementRef = useRef<HTMLDivElement>(null);
+    const loginRef = useRef<HTMLDivElement>(null);
+    const registerRef = useRef<HTMLDivElement>(null);
+    const [focusedRef, setFocusedRef] = useState<RefObject<HTMLDivElement | null>>(loginRef);
+    const [isLogin, setIsLogin] = useState<boolean>(true);
+    const [fieldFlag, setFieldFlag] = useState<string>("");
+    const [registerDetails, setRegisterDetails] = useState<RegisterDetails>({
+        username: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    });
+    const [loginDetails, setLoginDetails] = useState<LoginDetails>({
+        username: "",
+        password: "",
+    });
+    const [submittedDetails, setSubmittedDetails] = useState<RegisterDetails | LoginDetails>({
+        username: "",
+        password: ""
+    });
+
+    const fieldStyle: string = "w-full h-[35px] bg-secondary-900 border-[1px] p-1 pl-3 font-light border-secondary-700 text-secondary-200 rounded-none placeholder-secondary-700 focus:outline-none focus:border-primary-500";
+
+    const loginFields = <>
+    <input onChange={(event) => handleChange(event)} name="username" type="text" placeholder="Username" value={loginDetails.username} className={fieldStyle} />
+    <input onChange={(event) => handleChange(event)} name="password" type="password" placeholder="Password" value={loginDetails.password} className={fieldStyle} />
+    </>
+
+    const registerFields = <>
+    <input onChange={(event) => handleChange(event)} name="username" type="text" placeholder="Username" value={registerDetails.username} className={fieldStyle} />
+    <div className="w-full h-auto grid grid-cols-2 relative gap-2">
+        <input onChange={(event) => handleChange(event)} name="firstName" type="text" placeholder="First Name" value={registerDetails.firstName} className={fieldStyle} />
+        <input onChange={(event) => handleChange(event)} name="lastName" type="text" placeholder="Last Name" value={registerDetails.lastName} className={fieldStyle} />
+    </div>
+    <input onChange={(event) => handleChange(event)} name="email" type="text" placeholder="Email" value={registerDetails.email} className={fieldStyle} />
+    <input onChange={(event) => handleChange(event)} name="password" type="password" placeholder="Password" value={registerDetails.password} className={fieldStyle} />
+    <input onChange={(event) => handleChange(event)} name="confirmPassword" type="password" placeholder="Confirm Password" value={registerDetails.confirmPassword} className={fieldStyle} />
+    </>
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        if (isLogin) setLoginDetails({...loginDetails, [event.target.name]: event.target.value});
+        else setRegisterDetails({...registerDetails, [event.target.name]: event.target.value});
+    }
+
     
 
-    useEffect(() => {
-        if (!scrollElementRef.current) return;
-        
-        const scrollElement = scrollElementRef.current;
-        scrollElement.addEventListener("scroll", () => {
-            if (!scrollElementRef?.current) return;
-            if (scrollElementRef.current.offsetWidth - scrollElementRef.current.scrollLeft < 30) {
-                setIsEnd(true);
-            } else {
-                setIsEnd(false);
+    const handleSubmit = () => {
+        if (isLogin) {
+            if (loginDetails.username === "" || loginDetails.password === "") {
+                setFieldFlag("Please fill out all fields");
+                return;
             }
-        });
-        return () => {
-            scrollElement.removeEventListener("scroll", () => {});
-        } 
-    }, [scrollElementRef]);
+        } else {
+            if (registerDetails.username === "" || registerDetails.firstName === "" || registerDetails.lastName === "" || registerDetails.email === "" || registerDetails.password === "" || registerDetails.confirmPassword === "") {
+                setFieldFlag("Please fill out all fields");
+                return;
+            }
+            if (registerDetails.password !== registerDetails.confirmPassword) {
+                setFieldFlag("Passwords do not match");
+                return;
+            }
+            if (!(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/gm).test(registerDetails.email)) {
+                setFieldFlag("Invalid email address");
+                return;
+            }
+        }
+
+        setFieldFlag("");
+
+        
+    }
+
+    useEffect(() => {
+        console.log(registerDetails);
+    }, [registerDetails])
+
+    useEffect(() => {
+        console.log(loginDetails);
+    }, [loginDetails])
+
+    
 
     return (
-        <>
-        
-        <div className={`w-full h-[320px] relative flex z-20 ${ className }`}>
-            <h1 className="absolute w-full h-full flex items-center text-[18rem] bg-transparent font-bold text-secondary-800 z-10">{ title }</h1>
-            <div ref={scrollElementRef} className="w-full h-full py-2 relative overflow-x-scroll overflow-y-visible flex">
-            <div className={`flex absolute bg-transparent h-auto flex-row gap-5 pr-[30px] h-auto`}>
-                { testEvents.map( (event: EventListing, index: number) => <Event key={"EventDeckCard-" + index} {...event} /> ) }
+        <div id="login" ref={thisElementRef} style={{ height: `${isLoginPrompt ? "auto" : 0}`}} className={`w-full max-w-[500px] text-base overflow-clip`}>
+            <div className="flex flex-row w-auto relative gap-2 px-2">
+                <div onClick={() => {setFocusedRef(loginRef); setIsLogin(true);}} ref={loginRef} className="text-xl font-normal hover:text-primary-500 transition-colors">Login</div>
+                <div onClick={() => {setFocusedRef(registerRef); setIsLogin(false);}} ref={registerRef} className="text-xl font-normal hover:text-primary-500 transition-colors">Register</div>
+                <div style={{width: `${focusedRef.current?.offsetWidth}px`, left: `${focusedRef.current?.offsetLeft}px`}} className="absolute h-[2px] bg-primary-500 transition-all bottom-[1px]"></div>
             </div>
-            
+            <div className="w-auto h-auto mt-4 flex flex-col gap-2 pl-[8px]">
+                { isLogin ? loginFields : registerFields }
+                { fieldFlag !== "" ? <div className="text-xs text-[#d64646]">{fieldFlag}</div> : null }
+                <GenericButton onClick={() => handleSubmit()}>
+                    { isLogin ? "Login" : "Register"}
+                </GenericButton>
             </div>
-            
-            <div className={`w-1/5 h-[calc(100%_-_10px)] absolute top-0 right-0 ${!isEnd ? "bg-gradient-to-l from-secondary-900 via-secondary-900 to-transparent" : "bg-transparent"} z-30 flex items-center justify-end`}>
-                { children }
-            </div>
-            
         </div>
-        </>
     )
 }
 
 export default function Events() {
-    const [isSelect, setIsSelect] = useState<boolean>(false);
+    const [isLoginPrompt, setLoginPrompt] = useState<boolean>(false);
+    
 
     return (
-        <div className="w-full h-auto flex flex-col gap-x-4 px-6 relative text-4xl text-secondary-200 font-bold underline underline-offset-4">
-            <EventsSection />
-            <div onClick={() => setIsSelect(!isSelect)} className="w-auto h-auto text-xl text-normal z-20">
-                {isSelect ? "Hide future and past events" : "Show future and past events"}
-            </div>
+        <div className="w-full h-auto overflow-y-scroll flex flex-col gap-y-4 relative text-4xl text-secondary-200 font-bold mt-[25px] pr-[70px]">
+            <Login isLoginPrompt={isLoginPrompt} setLoginPrompt={setLoginPrompt} />
+            <TimelineMini>
+            { testEvents.map( (event: EventListing, index: number) => <Event key={"EventDeckCard-" + index}  isLoginPrompt={isLoginPrompt} setLoginPrompt={setLoginPrompt} {...event} /> ) }
+            </TimelineMini>
         </div>
     )
 }
