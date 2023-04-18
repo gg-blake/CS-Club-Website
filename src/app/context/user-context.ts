@@ -1,17 +1,17 @@
 import React from "react";
 
 interface User {
-    username: string;
-    password: string;
-    email: string;
+    username: string | null;
+    password: string | null;
+    email: string | null;
     sessionStartDate: Date;
 }
 
 const UserContext = React.createContext({
     user: {
-        username: "test_user123",
-        password: "password123",
-        email: "john.doe001@umb.edu",
+        username: null,
+        password: null,
+        email: null,
         sessionStartDate: new Date(Date.now()),
     },
     setUser: (user: User) => {},
