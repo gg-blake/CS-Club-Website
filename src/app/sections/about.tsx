@@ -20,11 +20,11 @@ export default function About() {
               On this section of the webpage, you can find information about our upcoming events, meetings, and workshops. We also provide resources for members, such as coding tutorials, job and internship postings, and information about industry trends. If you're interested in joining our club or attending one of our events, please feel free to reach out to us through the contact information provided. We look forward to meeting you and sharing our passion for computer science!
               </GenericParagraph>
             </div>
-            <div className="w-full h-full flex justify-center ">
+            <div className="flex-grow h-full flex justify-center ">
             <ImageCarousel 
             className={"flex-grow max-w-[150px] mt-[70px]"} 
-            items={[Image0, Image1, Image2, Image3, Image4]} 
-            scale={10} 
+            items={["/cover1.jpg", "/cover2.png", "/cover3.jpg", "/cover4.jpg", "/cover5.jpg"]} 
+            scale={8} 
             offsetY={30}
             />
             </div>

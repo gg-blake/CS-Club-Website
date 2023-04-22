@@ -4,7 +4,7 @@ import GlitchText from './glitch-text';
 function TimelineNode({ children , title , marginTop=0 } : { children : JSX.Element , title? : string , marginTop? : number }) {
     return (
         <>
-        <div className="w-[40px] h-full flex flex-col items-center relative">
+        <div id={title} className="w-[40px] h-full flex flex-col items-center relative">
             <div className="h-full w-[4px] bg-primary-500" />
         </div>
         <div className={`w-full h-auto min-h-screen transition-all mt-[${marginTop}px]`}>

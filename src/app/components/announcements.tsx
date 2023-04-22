@@ -95,10 +95,10 @@ const Announcement: FC<AnnouncementListing> = ({ time, date, platform , channel,
                         <a href={href} target="_blank" rel="noreferrer">View Post</a>
                     </GenericButton>
             </div>
-            <div className="flex-grow max-w-[600px] h-auto flex gap-3 mt-[10px] pr-[100px]">
-                <div className="w-auto h-auto text-6xl font-semibold text-primary-500 pt-5 leading-none">“</div>    
+            <div className="flex-grow max-w-[600px] h-auto flex gap-3 mt-[10px] items-center pr-[100px]">
+                <div className="w-auto h-auto text-4xl sm:text-6xl font-semibold text-primary-500 leading-none">“</div>    
                 <span className="flex-grow h-auto font-normal text-sm sm:text-base md:text-xl text-secondary-200 leading-tight opacity-50 hover:opacity-100 transition-all">{ message }</span>
-                <div className="w-auto h-full text-6xl font-semibold text-primary-500 flex items-end pb-5 leading-none">”</div>
+                <div className="w-auto h-auto text-4xl sm:text-6xl font-semibold text-primary-500 flex items-end leading-none">”</div>
             </div>
         </div>
     )
