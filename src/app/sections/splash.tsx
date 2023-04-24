@@ -1,12 +1,14 @@
-import { useEffect , useState } from 'react';
+import { useEffect , useState , useContext } from 'react';
+import { LangContext } from '@/app/components/langcontext';
 import MatrixCanvas from './matrix-canvas';
+import LangContent from '../components/lang-types';
 
 import Image from 'next/image';
 import useEventListener from '@/hooks/useEventListener';
 import GlitchText from '@/app/components/glitch-text';
 
-
-export default function Splash() {
+export default function Splash({ title, desc } : { title : LangContent , desc : LangContent}) {
+    const { lang } = useContext(LangContext);
     const [scroll, setScroll] = useState(0);
 
     useEventListener('scroll', (e: Event) => {
@@ -27,6 +29,8 @@ export default function Splash() {
         
     });
 
+    useEffect(() => {console.log(lang)}, [lang])
+
     return (
         <>
         <head>
@@ -36,19 +40,10 @@ export default function Splash() {
             <div id="splash" className={`absolute z-10 top-0 w-screen h-screen flex flex-col justify-center`}>
                 <MatrixCanvas scroll={scroll} />
                 <div id="title" className='my-2 px-3 z-10'>
-                    <span className='flex items-center gap-[35px] ml-[10px] flex-wrap'>
-                        <img
-                        className='pt-[10px] h-[80px] w-auto'
-                        src={"/umb.png"}
-                        alt="UMass Boston Logo"
-                        />
-                        <div className='relative'>
-                            <GlitchText className=" bg-transparent text-secondary-200 text-8xl font-bold">CS CLUB</GlitchText>
-                        </div>
-                        
-                    </span>
+                    <p className='text-3xl text-primary-200 px-2 py-2 font-extrabold'>{lang === "en" && "UMass Boston" || lang === "jp" && "ウマッス ボストン"}</p>
+                    <GlitchText className=" bg-transparent text-secondary-200 text-8xl font-bold">{title[lang]}</GlitchText>
                     
-                    <p className='text-xl text-secondary-100 px-2 py-2'>UMass Boston's official center for technology-driven students.</p>
+                    <p className='text-xl text-secondary-100 px-2 py-2'>{desc[lang]}</p>
                 </div>
                 
             </div>
