@@ -32,12 +32,14 @@ export default function NavBar({ className, ids } : { className?: string, ids: {
                 id="flexSwitchCheckDefault01" />
 
                 日本語 */}
-                <select className="group w-auto h-auto px-2 py-[6px] bg-secondary-900 bg-opacity-[10%] hover:bg-opacity-10 active:bg-opacity-10 hover:bg-primary-500 active:bg-secondary-500 hover:backdrop-blur-sm active:backdrop-blur-sm hover:text-primary-300 active:text-secondary-300 active:bg- rounded-sm font-light text-sm text-secondary-200 transition-all" value={"option1"} onChange={(e)=>{
+                <select 
+                className="group w-auto h-auto px-2 py-[6px] bg-secondary-900 bg-opacity-[10%] hover:bg-opacity-10 active:bg-opacity-10 hover:bg-primary-500 active:bg-secondary-500 hover:backdrop-blur-sm active:backdrop-blur-sm hover:text-primary-300 active:text-secondary-300 active:bg- rounded-sm font-light text-sm text-secondary-200 transition-all"
+                 value={lang} onChange={(e)=>{
                     setLang(e.target.value);
                 }}>
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="jp">日本語</option>
+                    <option className="bg-transparent text-gray-700" value="en">English</option>
+                    <option className="bg-transparent text-gray-700" value="es">Español</option>
+                    <option className="bg-transparent text-gray-700" value="jp">日本語</option>
                 </select>
                 <div className='group w-auto h-auto px-2 py-[6px] bg-secondary-900 bg-opacity-[10%] hover:bg-opacity-10 active:bg-opacity-10 hover:bg-primary-500 active:bg-secondary-500 hover:backdrop-blur-sm active:backdrop-blur-sm hover:text-primary-300 active:text-secondary-300 active:bg- rounded-sm font-light text-sm text-secondary-200 transition-all'>
                 {
