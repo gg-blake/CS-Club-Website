@@ -11,10 +11,12 @@ import { db } from "../../../config/firebase";
 import { doc, getDocs, collection, setDoc, QuerySnapshot, DocumentData, Timestamp } from "firebase/firestore";
 import { use } from "react";
 import { AuthContext } from "./authcontext";
+import { LangContext } from "./langcontext";
+import LangContent from "./lang-types";
 
 interface EventListing {
-    title: string;
-    desc: string;
+    title: LangContent;
+    desc: LangContent;
     start: Timestamp;
     end: Timestamp;
     where: string;
@@ -76,6 +78,7 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
     const [isSelect, setIsSelect] = useState<boolean>(false);
     const { user, setUser } = useContext(AuthContext);
     const rsvpButtonRef = useRef<HTMLButtonElement>(null);
+    const { lang } = useContext(LangContext);
 
     const pad = (n: number) => {
         return ("0" + n).slice(-2);
@@ -142,7 +145,7 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
     return (
         <div className="w-full h-auto grid grid-rows-[auto_auto_1fr] lg:grid-cols-[auto_auto_1fr] mb-[25px] gap-[3px] text-base bg-transparent relative z-20">
             <div className="w-auto min-w-[18vw] h-auto flex flex-col">
-                <h2  className={`text-2xl font-semibold text-secondary-200 w-full leading-none my-1`}>{title}</h2>
+                <h2  className={`text-2xl font-semibold text-secondary-200 w-full leading-none my-1`}>{title[lang]}</h2>
                 <GenericTimestamp className="pl-[5px] font-thin" date={parsedDate} time={parsedTime} icon={true} />
                 <span className="font-thin whitespace-nowrap w-auto flex flex-row items-center gap-2">
                     <PinIcon className="stroke-secondary-200 fill-none scale-[80%]" />
@@ -154,7 +157,7 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
                 { user.events.includes(uid) && <GenericButton className="border-[#ff0000] text-sm text-[#ff0000] hover:bg-[#ff0000] hover:border-[#ff0000]" onClick={() => unRSVP()}>Un-RSVP</GenericButton> }
             </div>
             <div className="hidden lg:visible lg:flex w-[2px] h-[92%] mt-3 my-3 mx-2 rounded-full bg-secondary-800 self-center  " />
-            <GenericParagraph className="text-secondary-200 text-[.95rem] md:text-[1.1rem] flex-shrink opacity-50 hover:opacity-100 transition-opacity leading-tight font-light overflow-y-scroll">{ desc }</GenericParagraph>
+            <GenericParagraph className="text-secondary-200 text-[.95rem] md:text-[1.1rem] flex-shrink opacity-50 hover:opacity-100 transition-opacity leading-tight font-light overflow-y-scroll">{ desc[lang] }</GenericParagraph>
         </div>
     )
 }

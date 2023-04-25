@@ -2,6 +2,10 @@ import useEventListener from '@/hooks/useEventListener';
 import { useRef, useContext } from 'react';
 import { LangContext } from './langcontext';
 
+/*
+The UMB CS Club hosted a "Resume Roast" event where students submitted their resumes to be critiqued by industry professionals. The event provided valuable feedback and advice to help students improve their resumes and increase their chances of success in the job market. Students were also able to network with professionals and learn about potential job opportunities.
+*/
+
 export default function NavBar({ className, ids } : { className?: string, ids: {[index:string]:string[]} }) {
     const { lang, setLang } = useContext(LangContext);
 
