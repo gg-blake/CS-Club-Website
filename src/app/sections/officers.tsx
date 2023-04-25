@@ -6,7 +6,7 @@ import ELON from './elon.jpg';
 
 export default function Officers() {
     return (
-        <div className='w-full flex-shrink h-auto min-h-[60vh] flex flex-row gap-[75px] px-5 pt-12 mt-5'>
+        <div className='w-auto grid grid-flow-row grid-rows-1 flex-shrink h-auto min-h-[60vh] gap-[75px] px-5 pt-12 mt-5'>
             <ProfileCard name="Sleepy Joe" title="President" src={SLEEPYJOE} links={[
               { name: "Twitter", href: "https://twitter.com/realDonaldTrump" },
               { name: "Twitch", href: "https://www.twitch.tv/sleepyjoe" },
