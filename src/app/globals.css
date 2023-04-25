@@ -10,7 +10,7 @@
 @keyframes fade-in {
     0% {
         opacity: 0;
-        margin-top: 50px;
+        margin-top: 200px;
     }
     100% {
         
@@ -32,7 +32,7 @@
     100% {
         
         opacity: 0;
-        margin-top: 50px;
+        margin-top: 200px;
     }
 }
 

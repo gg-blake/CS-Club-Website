@@ -24,7 +24,6 @@ const SPLASH_DESC_EN = "UMass Boston's official center for technology-driven stu
 const SPLASH_DESC_JP = "テクノロジーが好きなウマッスボストンの学生が会うところ！";
 
 export default function Home() {
-  const { lang, setLang } = React.useContext(LangContext);
   const [touchingTop, setTouchingTop] = useState(true);
 
   useEventListener('scroll', (e: Event) => {
@@ -35,7 +34,7 @@ export default function Home() {
     <LangContextProvider>
       <AuthContextProvider>
         <div className={`bg-secondary-900 overflow-x-hidden w-screen  ${inter.className}`}>
-          <NavBar className={`text-lg fixed top-0 bg-secondary-900 justify-between md:justify-start p-2 md:pl-6 md:py-1 ${touchingTop ? "bg-opacity-0" : " border-b-[1px] border-secondary-700 bg-opacity-50 backdrop-blur-lg shadow-lg"}`} ids={{"en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP}} />
+          <NavBar className={`text-lg fixed top-0 bg-secondary-900 p-2 md:pl-6 md:py-1 ${touchingTop ? "bg-opacity-0" : " border-b-[1px] border-secondary-700 bg-opacity-50 backdrop-blur-lg shadow-lg"}`} ids={{"en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP}} />
           <Splash title={{'en': SPLASH_TITLE_EN, 'jp': SPLASH_TITLE_JP}} desc={{'en': SPLASH_DESC_EN, 'jp': SPLASH_DESC_JP}} />
           <Timeline className='w-full h-auto min-h-screen bg-secondary-900' titles={{"en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP}}>
             <About />

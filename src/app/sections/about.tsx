@@ -1,15 +1,38 @@
 import GenericParagraph from "../components/generic-paragraph";
 import ImageCarousel from "../components/image-carousel";
-import Image0 from '../images/mm_food.jpg';
-import Image1 from '../images/good_kid_maad_city.jpg';
-import Image2 from '../images/good_kid_maad_city_deluxe.jpg';
-import Image3 from '../images/good_kid_maad_city_deluxe_2.png';
-import Image4 from '../images/ambitionz_az_a_ridah.jpg';
+
 import GlitchText from "../components/glitch-text";
+
+const ABOUT_IMAGE_CAROUSEL_CAPTIONS = {
+    "/cover1.jpg": {
+        "en": "Cover 1",
+        "jp": "表紙1"
+    },
+    "/cover2.png": {
+        "en": "Cover 2",
+        "jp": "表紙2"
+    },
+    "/cover3.jpg": {
+        "en": "Cover 3",
+        "jp": "表紙3"
+    },
+    "/cover4.jpg": {
+        "en": "Cover 4",
+        "jp": "表紙4"
+    },
+    "/cover5.jpg": {
+        "en": "Cover 5",
+        "jp": "表紙5"
+    },
+}
+
+/*
+ウマッスボストンのコンピューター科学のサクルのウェブページよこうそ！
+*/
 
 export default function About() {
     return (
-        <div className='px-4 flex flex-col md:grid md:grid-cols-2 gap-4 mt-4'>
+        <div className='min-h-[150vh] sm:min-h-[130vh] flex flex-col lg:grid lg:grid-cols-2 gap-[200px] lg:gap-4 mt-4'>
             
             <div>
               <GenericParagraph className='text-secondary-200 text-lg'>
@@ -20,13 +43,12 @@ export default function About() {
               On this section of the webpage, you can find information about our upcoming events, meetings, and workshops. We also provide resources for members, such as coding tutorials, job and internship postings, and information about industry trends. If you're interested in joining our club or attending one of our events, please feel free to reach out to us through the contact information provided. We look forward to meeting you and sharing our passion for computer science!
               </GenericParagraph>
             </div>
-            <div className="flex-grow h-full flex justify-center ">
-            <ImageCarousel 
-            className={"flex-grow max-w-[150px] mt-[70px]"} 
-            items={["/cover1.jpg", "/cover2.png", "/cover3.jpg", "/cover4.jpg", "/cover5.jpg"]} 
-            scale={8} 
-            offsetY={30}
-            />
+            <div className="flex-grow h-full flex justify-start lg:justify-center pl-[35%] pr-[45%] md:pl-[15%] md:pr-[75%] lg:px-[45%]">
+                <ImageCarousel 
+                className={"flex-grow mt-[70px]"} 
+                items={ABOUT_IMAGE_CAROUSEL_CAPTIONS} 
+                offsetY={20}
+                />
             </div>
         </div>
     )
