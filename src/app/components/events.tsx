@@ -19,7 +19,7 @@ interface EventListing {
     desc: LangContent;
     start: Timestamp;
     end: Timestamp;
-    where: string;
+    where: LangContent;
     who: string[];
 }
 
@@ -79,6 +79,8 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
     const { user, setUser } = useContext(AuthContext);
     const rsvpButtonRef = useRef<HTMLButtonElement>(null);
     const { lang } = useContext(LangContext);
+
+    console.log(data);
 
     const pad = (n: number) => {
         return ("0" + n).slice(-2);
@@ -149,7 +151,7 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
                 <GenericTimestamp className="pl-[5px] font-thin" date={parsedDate} time={parsedTime} icon={true} />
                 <span className="font-thin whitespace-nowrap w-auto flex flex-row items-center gap-2">
                     <PinIcon className="stroke-secondary-200 fill-none scale-[80%]" />
-                    <h3 className="inline-block">{ where }</h3>
+                    <h3 className="inline-block">{ where[lang] }</h3>
                 </span>
                 <GenericButton className={`hover:border-secondary-200 hover:text-secondary-200 ${!user.events.includes(uid) ? "border-primary-500 text-sm text-primary-500 hover:bg-primary-500" : "border-[#29ff4c] text-sm text-[#29ff4c] hover:bg-[#29ff4c]"}`} ref={rsvpButtonRef} onClick={!user.uid ? () => setLoginPrompt(true) : () => RSVP()}>
                 { !user.uid ? <div onClick={() => smoothScroll("events")} >Login to RSVP</div> : !user.events.includes(uid) ? "RSVP" : "RSVP'd" }
