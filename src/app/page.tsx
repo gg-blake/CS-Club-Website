@@ -17,11 +17,14 @@ import { LangContext, LangContextProvider } from './components/langcontext';
 
 const inter = Inter({ subsets: ['latin'] });
 const SECTION_TITLES_EN = ["About", "Announcements",  "Events", "Officers"];
-const SECTION_TITLES_JP = ["サクルについて", "お知らせ", "イベント", "役員"];
 const SPLASH_TITLE_EN = "CS CLUB";
-const SPLASH_TITLE_JP = "コンピューターサイエンスのサクル";
 const SPLASH_DESC_EN = "UMass Boston's official center for technology-driven students!";
+const SECTION_TITLES_JP = ["サクルについて", "お知らせ", "イベント", "役員"];
+const SPLASH_TITLE_JP = "コンピューターサイエンスのサクル";
 const SPLASH_DESC_JP = "テクノロジーが好きなウマッスボストンの学生が会うところ！";
+const SECTION_TITLES_ES = ["Acerca De", "Anuncios", "Eventos", "Oficiales"];
+const SPLASH_TITLE_ES = "CLUB de INFORMÁTICA";
+const SPLASH_DESC_ES = "El centro oficial de UMass Boston para estudiantes impulsados por la tecnología";
 
 export default function Home() {
   const [touchingTop, setTouchingTop] = useState(true);
@@ -34,9 +37,9 @@ export default function Home() {
     <LangContextProvider>
       <AuthContextProvider>
         <div className={`bg-secondary-900 overflow-x-hidden w-screen  ${inter.className}`}>
-          <NavBar className={`text-lg fixed top-0 bg-secondary-900 p-2 md:pl-6 md:py-1 ${touchingTop ? "bg-opacity-0" : " border-b-[1px] border-secondary-700 bg-opacity-50 backdrop-blur-lg shadow-lg"}`} ids={{"en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP}} />
-          <Splash title={{'en': SPLASH_TITLE_EN, 'jp': SPLASH_TITLE_JP}} desc={{'en': SPLASH_DESC_EN, 'jp': SPLASH_DESC_JP}} />
-          <Timeline className='w-full h-auto min-h-screen bg-secondary-900' titles={{"en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP}}>
+          <NavBar className={`text-lg fixed top-0 bg-secondary-900 p-2 md:pl-6 md:py-1 ${touchingTop ? "bg-opacity-0" : " border-b-[1px] border-secondary-700 bg-opacity-50 backdrop-blur-lg shadow-lg"}`} ids={{"en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP, "es": SECTION_TITLES_ES}} />
+          <Splash title={{'en': SPLASH_TITLE_EN, 'jp': SPLASH_TITLE_JP, 'es': SPLASH_TITLE_ES}} desc={{'en': SPLASH_DESC_EN, 'jp': SPLASH_DESC_JP, 'es': SPLASH_TITLE_ES}} />
+          <Timeline className='w-full h-auto min-h-screen bg-secondary-900' titles={{ "en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP, "es": SECTION_TITLES_ES }}>
             <About />
             <Announcements />
             <Events />
