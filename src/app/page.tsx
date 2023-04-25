@@ -22,7 +22,7 @@ const SPLASH_DESC_EN = "UMass Boston's official center for technology-driven stu
 const SECTION_TITLES_JP = ["サクルについて", "お知らせ", "イベント", "役員"];
 const SPLASH_TITLE_JP = "コンピューターサイエンスのサクル";
 const SPLASH_DESC_JP = "テクノロジーが好きなウマッスボストンの学生が会うところ！";
-const SECTION_TITLES_ES = ["Acerca De", "Anuncios", "Eventos", "Oficiales"];
+const SECTION_TITLES_ES = ["AcercaDe", "Anuncios", "Eventos", "Oficiales"];
 const SPLASH_TITLE_ES = "CLUB de INFORMÁTICA";
 const SPLASH_DESC_ES = "El centro oficial de UMass Boston para estudiantes impulsados por la tecnología";
 
