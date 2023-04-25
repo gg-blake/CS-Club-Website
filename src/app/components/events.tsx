@@ -179,7 +179,6 @@ export default function Events() {
 
     return (
         <div className="w-full h-auto overflow-y-scroll flex flex-col relative text-4xl text-secondary-200 font-bold mt-[25px] pr-[70px]">
-            <Login isLoginPrompt={isLoginPrompt} setLoginPrompt={setLoginPrompt} />
             <TimelineMini>
             { eventList.map( (event: DocumentData, index: number) => <Event key={"EventDeckCard-" + index}  isLoginPrompt={isLoginPrompt} setLoginPrompt={setLoginPrompt} uid={event.id} data={event.data()} /> ) }
             </TimelineMini>

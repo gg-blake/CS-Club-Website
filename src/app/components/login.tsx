@@ -8,11 +8,6 @@ interface LoginPromptState {
     setLoginPrompt: Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface LoginState {
-    isLoginPrompt: boolean;
-    setLoginPrompt: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 interface RegisterDetails {
     firstName: string;
     lastName: string;
@@ -26,7 +21,7 @@ interface LoginDetails {
     password: string;
 }
 
-const Login: FC<LoginState> = () => {
+const Login: FC = () => {
     const thisElementRef = useRef<HTMLDivElement>(null);
     const loginRef = useRef<HTMLDivElement>(null);
     const registerRef = useRef<HTMLDivElement>(null);
