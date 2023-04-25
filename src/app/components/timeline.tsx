@@ -35,7 +35,7 @@ const Timeline: FC<TimelineItem> = ({ children , className , titles }) => {
 
     return (
         <div className={`relative grid grid-cols-[40px_100%] ${ className }`}>
-            { children.map((child, index) => <TimelineNode title={ {'en': titles && titles['en'][index], 'jp': titles && titles['jp'][index]} } marginTop={index == 0 ? 100 : 0}>{ child }</TimelineNode>) }
+            { children.map((child, index) => <TimelineNode title={ {'en': titles && titles['en'][index], 'jp': titles && titles['jp'][index], "es": titles && titles['es'][index]} } marginTop={index == 0 ? 100 : 0}>{ child }</TimelineNode>) }
         </div>
     )
 }
