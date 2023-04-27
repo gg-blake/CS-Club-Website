@@ -13,6 +13,10 @@ interface ImageData {
 interface AboutProps {
     images: ImageData;
 }
+import { FC } from "react";
+import GenericParagraph from "@/app/components/core/generic-paragraph";
+import ImageCarousel from "@/app/components/core/image-carousel";
+import ImageCarouselOPT from "@/app/components/core/image-carousel-optimize";
 
 const About: FC<AboutProps> = ({ images }) => {
     return (
@@ -34,6 +38,7 @@ const About: FC<AboutProps> = ({ images }) => {
                 offsetY={20}
                 />
             </div>
+            <ImageCarouselOPT images={["1", "2", "3", "4"]} interval={50} width={200} height={200} angle={100} />
         </div>
     )
 }
