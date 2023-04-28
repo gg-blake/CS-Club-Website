@@ -1,62 +1,143 @@
-import "@/app/globals.css";
-import { useState , useEffect , useRef , useContext, FC } from 'react';
-import { LangContext } from '@/app/components/context/lang-context';
-import { useAutoAnimate } from '@formkit/auto-animate/react';
-import Carousel from '@/app/components/types/carousel-types';
+import { FC, useEffect, useRef, useState, RefObject, useCallback, createRef, useContext } from "react";
+import LangContent from "@/app/components/types/lang-content";
+import { LangContext } from "@/app/components/context/lang-context";
 
+interface ImageCarouselItem {
+    filename: string;
+    alt: LangContent;
+}
 
-const ImageCarousel: FC<Carousel<{[index:string]:{[index:string]:string}}>> = ({ className, items , scale=3 , offsetY=40, duration=4000, animationDuration=800 } ) => {
+interface ImageCarouselOPTPRops {
+    images: ImageCarouselItem[];
+    interval: number;
+    duration: number;
+    containerWidth: number;
+    containerHeight: number;
+    containerAngle: number;
+    childWidth: number;
+    childHeight: number;
+}
+
+interface ImageLinkToContainer {
+    [key: string]: {
+        ref: RefObject<HTMLDivElement>;
+        image: ImageCarouselItem;
+    };
+}
+
+const ImageCarouselOPT: FC<ImageCarouselOPTPRops> = ({ images, interval, duration, containerWidth, containerHeight, containerAngle, childWidth, childHeight }) => {
     const { lang } = useContext(LangContext);
-    const [imageItems, setImageItems] = useState(Object.keys(items));
-    const [thisElementRefCallback, enableAnimations] = useAutoAnimate({
-        duration: 800,
-        easing: "ease-in-out",
-    });
-    const [direction, setDirection] = useState<"forward" | "back">("forward");
-    const itemRef = useRef<HTMLLIElement>(null);
-    
-    useEffect(() => {
-        const interval = setInterval(cycle, duration);
-        return () => clearInterval(interval);
+    const [imageContainerRefs, setImageContainerRefs] = useState<JSX.Element[]>([]);
+    const imageContainerRefsMap = useRef<ImageLinkToContainer>({});
+    const thisElementRef = useRef<HTMLDivElement>(null);
+    // Calculate the required padding needed to prevent last image from being clipped
+    const paddingRight = childWidth - (containerWidth / images.length) > 0 ? childWidth - (containerWidth / images.length) : 0;
+    // Moves the top image to the back of the carousel and shifts the other images forward
+    const cycle = useCallback(() => {
+        setImageContainerRefs((prevImageRefs: JSX.Element[]) => {
+          const first = prevImageRefs[0];
+          const rest = prevImageRefs.slice(1);
+          return [...rest, first];
+        });
     }, []);
 
-    const cycle = () => {
-        setDirection("forward");
-        setImageItems((prevImageItems: string[]) => {
-            const first = prevImageItems[0];
-            const rest = prevImageItems.slice(1);
-            return [...rest, first];
-        })
-    };
+    useEffect(() => {
+        // Populated the carousel with image containers
+        images.forEach((currentImage, imageIndex: number) => {
+            // Prevents overflow of image containers
+            if (imageContainerRefs.length === images.length) return;
+            // Create a ref for each image container
+            const containerElementRef = createRef<HTMLDivElement>();
+            // Give the container element a key so that React can track it
+            const containerElement = <div ref={containerElementRef} key={`container-element-${imageIndex}`} className="flex-grow h-full" />;
+            // Used to track the contaier element position in the DOM
+            // This allows us to find where the image smoothly transitions to once the images are cycled
+            imageContainerRefsMap.current[currentImage.filename] = {
+                ref: containerElementRef,
+                image: currentImage,
+            };
+            // Add the container element to the imageRefs array
+            setImageContainerRefs((prevImageContainerRefs) => [...prevImageContainerRefs, containerElement]);
+        });
+    }, [images]);
 
-    const cycleBack = () => {
-        setDirection("back");
-        setImageItems((prevImageItems: string[]) => {
-            const last = prevImageItems[prevImageItems.length - 1];
-            const rest = prevImageItems.slice(0, prevImageItems.length - 1);
-            return [last, ...rest];
-        })
-    };
+    useEffect(() => {
+        // Auto cycle the images
+        let cycleInterval = setInterval(cycle, interval);
+        return () => clearInterval(cycleInterval);
+    }, [cycle, interval]);
+
+    function findMaxIndex() {
+        const arr = Object.values(imageContainerRefsMap.current).map(element => element.ref.current?.offsetLeft || 0);
+        if (!arr) return;
+        let maxIndex = 0;
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
+
+    function findMinIndex() {
+        const arr = Object.values(imageContainerRefsMap.current).map(element => element.ref.current?.offsetLeft || 0);
+        if (!arr) return;
+        let minIndex = 0;
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[minIndex]) {
+                minIndex = i;
+            }
+        }
+        return minIndex;
+    }
 
     return (
-        <>
-        <ul ref={thisElementRefCallback} className={`${className} flex flex-row-reverse `}>
-            {imageItems.map(
-            (image, index) => {
+        <div ref={thisElementRef} style={{transform: `rotate(${containerAngle}deg)`, width:`${containerWidth + paddingRight}px`, paddingRight: `${paddingRight}px` }} className={`flex flex-row h-auto`}>
+            <style>
+                {`
+
+                    @keyframes slide-out {
+                        0% {
+                            z-index: 99999;
+                            opacity: 1;
+                            transform: translateY(0) rotate(${-containerAngle}deg);
+                        }
+                        100% {
+                            z-index: 99999;
+                            opacity: 0;
+                            transform: translateY(-100px) rotate(${-containerAngle}deg);
+                        }
+                    }
+
+                    @keyframes slide-over {}
+
+                    @keyframes slide-in {
+                        0% {
+                            opacity: 0;
+                            transform: translateY(100px) rotate(${-containerAngle}deg);
+                            left: ${thisElementRef.current?.offsetWidth! - ((thisElementRef.current?.offsetWidth! - paddingRight) / imageContainerRefs.length) - paddingRight}px;
+                            z-index: 0;
+                        }
+                        100% {
+                            opacity: 1;
+                            transform: translateY(0) rotate(${-containerAngle}deg);
+                            left: ${thisElementRef.current?.offsetWidth! - ((thisElementRef.current?.offsetWidth! - paddingRight) / imageContainerRefs.length) - paddingRight}px;
+                            z-index: 0;
+                        }
+                    }
+                `}
+            </style>
+            {imageContainerRefs}
+            {Object.values(imageContainerRefsMap.current).map((element, index) => {
                 return (
-                    <li ref={itemRef} key={image} className={`w-full h-full`}>
-                        <div style={{transform: `translateY(${offsetY * index}px) scale(1800%)`, transitionProperty: "transform", transitionDuration: `50ms`, transitionTimingFunction: `linear` , animationDelay: `${duration - animationDuration + 30}ms`, animationDuration: `${animationDuration}ms`, animationTimingFunction: "cubic-bezier(.65,.21,.32,.9)"}} className={`w-full h-auto shadow-md rounded-md  ${index == 0 ? `fade-out opacity-1` : index == (imageItems.length - 1) ? `fade-in opacity-0` : ""}`}>
-                            <img src={image} alt={image} className={`rounded-[0.5px] shadow-xl`} />
-                            <div style={{opacity: index === (imageItems.length - 2) ? 1 : 0}} className='absolute left-0 text-[10%] font-normal text-secondary-400 mt-[1.2px] transition-opacity'>{items[image][lang]}</div>
-                        </div>
-                    </li>
+                    <div style={{zIndex: window.innerWidth - Math.round(element.ref.current?.offsetLeft!), left: `${element.ref.current?.offsetLeft}px`, transitionDelay: `${findMaxIndex() != index ? 0 : duration - 150}ms` , animation: (findMaxIndex() === index) ? `slide-out ${duration/2}ms ease-in-out, slide-in ${duration/2}ms ease-in-out ${duration/2}ms` : "", transform: `rotate(${-containerAngle}deg)`}} className={`absolute w-auto h-auto transition-[transform_opacity] opacity-1`}>
+                        <img src={element.image.filename} alt={element.image.filename} style={{width: `${childWidth ? `${childWidth}px` : `${childHeight}px`}`, height: `${childHeight}px`}} className={`rounded-md object-cover transition-all ${findMinIndex() !== index ? "brightness-[25%] shadow-lg" : ""}`} />
+                        <p style={{opacity: findMinIndex() === index ? 1 : 0}} className="text-md text-secondary-200 mt-4 font-light transition-opacity">{element.image.alt[lang]}</p>
+                    </div>
                 )
-            }
-            )}
-        </ul>
-        
-        </>
+            })}
+        </div>
     )
 }
 
-export default ImageCarousel;
+export default ImageCarouselOPT;

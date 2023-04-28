@@ -3,20 +3,16 @@ import GenericParagraph from "@/app/components/core/generic-paragraph";
 import ImageCarousel from "@/app/components/core/image-carousel";
 
 
-
 interface ImageData {
-    [imageKey: string]: {
+    filename: string;
+    alt: {
         [langKey: string]: string;
     };
 }
 
 interface AboutProps {
-    images: ImageData;
+    images: ImageData[];
 }
-import { FC } from "react";
-import GenericParagraph from "@/app/components/core/generic-paragraph";
-import ImageCarousel from "@/app/components/core/image-carousel";
-import ImageCarouselOPT from "@/app/components/core/image-carousel-optimize";
 
 const About: FC<AboutProps> = ({ images }) => {
     return (
@@ -31,14 +27,12 @@ const About: FC<AboutProps> = ({ images }) => {
               On this section of the webpage, you can find information about our upcoming events, meetings, and workshops. We also provide resources for members, such as coding tutorials, job and internship postings, and information about industry trends. If you're interested in joining our club or attending one of our events, please feel free to reach out to us through the contact information provided. We look forward to meeting you and sharing our passion for computer science!
               </GenericParagraph>
             </div>
-            <div className="flex-grow h-full flex justify-start lg:justify-center pl-[35%] pr-[45%] md:pl-[15%] md:pr-[75%] lg:px-[45%]">
-                <ImageCarousel 
-                className={"flex-grow mt-[70px]"} 
-                items={images} 
-                offsetY={20}
-                />
+            <div className="flex-grow h-full flex justify-center lg:justify-center pl-[35%] pr-[45%] md:pl-[15%] md:pr-[75%] lg:px-[45%]">
+                <div className="w-auto h-auto pr-[100px]">
+                    <ImageCarousel images={images} interval={2000} duration={500} containerWidth={100} containerHeight={200} containerAngle={-45} childWidth={300} childHeight={300} />
+                </div>
             </div>
-            <ImageCarouselOPT images={["1", "2", "3", "4"]} interval={50} width={200} height={200} angle={100} />
+            
         </div>
     )
 }

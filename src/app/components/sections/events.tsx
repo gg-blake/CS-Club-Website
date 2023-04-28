@@ -8,7 +8,7 @@ import TimelineMini from "@/app/components/core/timeline-mini";
 import GenericTimestamp from "@/app/components/core/generic-timestamp";
 import GenericParagraph from "@/app/components/core/generic-paragraph";
 import GenericButton from "@/app/components/core/generic-button";
-import LangContent from "@/app/components/types/lang-types";
+import LangContent from "@/app/components/types/lang-content";
 
 interface EventListing {
     title: LangContent;

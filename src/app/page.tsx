@@ -24,28 +24,43 @@ const SECTION_TITLES_ES = ["AcercaDe", "Anuncios", "Eventos", "Oficiales"];
 const SPLASH_TITLE_ES = "CLUB de INFORMÁTICA";
 const SPLASH_DESC_ES = "El centro oficial de UMass Boston para estudiantes impulsados por la tecnología";
 
-const ABOUT_IMAGE_CAROUSEL_CAPTIONS = {
-  "/cover1.jpg": {
+const ABOUT_IMAGE_CAROUSEL_DATA = [
+  {
+    filename: "/cover1.jpg",
+    alt: {
       "en": "Cover 1",
       "jp": "表紙1"
+    }
   },
-  "/cover2.png": {
+  {
+    filename: "/cover2.png",
+    alt: {
       "en": "Cover 2",
       "jp": "表紙2"
+    }
   },
-  "/cover3.jpg": {
+  {
+    filename: "/cover3.jpg",
+    alt: {
       "en": "Cover 3",
       "jp": "表紙3"
+    }
   },
-  "/cover4.jpg": {
+  {
+    filename: "/cover4.jpg",
+    alt: {
       "en": "Cover 4",
       "jp": "表紙4"
+    }
   },
-  "/cover5.jpg": {
+  {
+    filename: "/cover5.jpg",
+    alt: {
       "en": "Cover 5",
       "jp": "表紙5"
+    }
   },
-}
+]
 
 export default function Home() {
   const [touchingTop, setTouchingTop] = useState(true);
@@ -61,7 +76,7 @@ export default function Home() {
           <NavBar className={`text-lg fixed top-0 bg-secondary-900 p-2 md:pl-6 md:py-1 ${touchingTop ? "bg-opacity-0" : " border-b-[1px] border-secondary-700 bg-opacity-50 backdrop-blur-lg shadow-lg"}`} ids={{"en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP, "es": SECTION_TITLES_ES}} />
           <Splash title={{'en': SPLASH_TITLE_EN, 'jp': SPLASH_TITLE_JP, 'es': SPLASH_TITLE_ES}} desc={{'en': SPLASH_DESC_EN, 'jp': SPLASH_DESC_JP, 'es': SPLASH_TITLE_ES}} />
           <Timeline className='w-full h-auto min-h-screen bg-secondary-900' titles={{ "en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP, "es": SECTION_TITLES_ES }}>
-            <About images={ABOUT_IMAGE_CAROUSEL_CAPTIONS} />
+            <About images={ABOUT_IMAGE_CAROUSEL_DATA} />
             <Announcements />
             <Events />
             <Officers />
