@@ -65,7 +65,7 @@ const ImageCarouselOPT: FC<ImageCarouselOPTPRops> = ({ images, interval, duratio
         // Auto cycle the images
         let cycleInterval = setInterval(cycle, interval);
         return () => clearInterval(cycleInterval);
-    }, [cycle, interval]);
+    }, []);
 
     function findMaxIndex() {
         const arr = Object.values(imageContainerRefsMap.current).map(element => element.ref.current?.offsetLeft || 0);
@@ -109,8 +109,6 @@ const ImageCarouselOPT: FC<ImageCarouselOPTPRops> = ({ images, interval, duratio
                         }
                     }
 
-                    @keyframes slide-over {}
-
                     @keyframes slide-in {
                         0% {
                             opacity: 0;
@@ -132,7 +130,7 @@ const ImageCarouselOPT: FC<ImageCarouselOPTPRops> = ({ images, interval, duratio
                 return (
                     <div style={{zIndex: window.innerWidth - Math.round(element.ref.current?.offsetLeft!), left: `${element.ref.current?.offsetLeft}px`, transitionDelay: `${findMaxIndex() != index ? 0 : duration - 150}ms` , animation: (findMaxIndex() === index) ? `slide-out ${duration/2}ms ease-in-out, slide-in ${duration/2}ms ease-in-out ${duration/2}ms` : "", transform: `rotate(${-containerAngle}deg)`}} className={`absolute w-auto h-auto transition-[transform_opacity] opacity-1`}>
                         <img src={element.image.filename} alt={element.image.filename} style={{width: `${childWidth ? `${childWidth}px` : `${childHeight}px`}`, height: `${childHeight}px`}} className={`rounded-md object-cover transition-all ${findMinIndex() !== index ? "brightness-[25%] shadow-lg" : ""}`} />
-                        <p style={{opacity: findMinIndex() === index ? 1 : 0}} className="text-md text-secondary-200 mt-4 font-light transition-opacity">{element.image.alt[lang]}</p>
+                        <p style={{opacity: findMinIndex() === index ? 1 : 0}} className="absolute bottom--[20px] text-sm text-secondary-600 font-normal transition-opacity">{element.image.alt[lang]}</p>
                     </div>
                 )
             })}

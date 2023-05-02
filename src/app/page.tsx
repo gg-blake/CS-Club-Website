@@ -26,38 +26,31 @@ const SPLASH_DESC_ES = "El centro oficial de UMass Boston para estudiantes impul
 
 const ABOUT_IMAGE_CAROUSEL_DATA = [
   {
-    filename: "/cover1.jpg",
+    filename: "/carousel1.jpg",
     alt: {
       "en": "Cover 1",
       "jp": "表紙1"
     }
   },
   {
-    filename: "/cover2.png",
+    filename: "/carousel2.jpg",
     alt: {
-      "en": "Cover 2",
-      "jp": "表紙2"
+      "en": "Cover 1",
+      "jp": "表紙1"
     }
   },
   {
-    filename: "/cover3.jpg",
+    filename: "/carousel3.jpg",
     alt: {
-      "en": "Cover 3",
-      "jp": "表紙3"
+      "en": "Club members collaborating on our latest LeetCode competition problem!",
+      "jp": "最新のLeetCodeコンテストの問題に取り組むクラブメンバー！"
     }
   },
   {
-    filename: "/cover4.jpg",
+    filename: "/carousel4.jpg",
     alt: {
       "en": "Cover 4",
       "jp": "表紙4"
-    }
-  },
-  {
-    filename: "/cover5.jpg",
-    alt: {
-      "en": "Cover 5",
-      "jp": "表紙5"
     }
   },
 ]
