@@ -1,7 +1,7 @@
 import { useEffect , useState , useContext } from 'react';
 import { LangContext } from '@/app/components/context/lang-context';
 import MatrixCanvas from '@/app/components/core/matrix-canvas';
-import LangContent from '@/app/components/types/lang-types';
+import LangContent from '@/app/components/types/lang-content';
 import useEventListener from '@/app/components/hooks/useEventListener';
 import GlitchText from '@/app/components/core/glitch-text';
 

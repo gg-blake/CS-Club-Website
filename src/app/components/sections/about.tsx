@@ -1,17 +1,31 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import GenericParagraph from "@/app/components/core/generic-paragraph";
-import ImageCarousel from "@/app/components/core/image-carousel";
-
+import {Carousel, CarouselIndexContext, CarouselElement} from "@/app/components/core/generic-carousel";
+import { LangContext } from "@/app/components/context/lang-context";
 
 
 interface ImageData {
-    [imageKey: string]: {
+    filename: string;
+    alt: {
         [langKey: string]: string;
     };
 }
 
 interface AboutProps {
-    images: ImageData;
+    images: ImageData[];
+}
+
+const AboutImage: FC<{image: ImageData, index: number}> = ({ image, index }) => {
+    const { carouselIndex } = useContext(CarouselIndexContext);
+    const { lang } = useContext(LangContext);
+
+    return (
+        <>
+            <img src={image.filename} alt={`${carouselIndex} index`} style={{width: "300px", height: "300px"}} className={`rounded-md object-cover transition-all ${carouselIndex !== index ? "brightness-[25%] shadow-lg" : ""}`} />
+            <p style={{opacity: carouselIndex === index ? 1 : 0}} className="absolute bottom--[20px] text-sm text-secondary-600 font-normal transition-opacity">{image.alt[lang]}</p>
+        </>
+        
+    )
 }
 
 const About: FC<AboutProps> = ({ images }) => {
@@ -27,13 +41,14 @@ const About: FC<AboutProps> = ({ images }) => {
               On this section of the webpage, you can find information about our upcoming events, meetings, and workshops. We also provide resources for members, such as coding tutorials, job and internship postings, and information about industry trends. If you're interested in joining our club or attending one of our events, please feel free to reach out to us through the contact information provided. We look forward to meeting you and sharing our passion for computer science!
               </GenericParagraph>
             </div>
-            <div className="flex-grow h-full flex justify-start lg:justify-center pl-[35%] pr-[45%] md:pl-[15%] md:pr-[75%] lg:px-[45%]">
-                <ImageCarousel 
-                className={"flex-grow mt-[70px]"} 
-                items={images} 
-                offsetY={20}
-                />
+            <div className="flex-grow h-full flex justify-center lg:justify-center pl-[35%] pr-[45%] md:pl-[15%] md:pr-[75%] lg:px-[45%]">
+                <div className="w-auto h-auto pr-[100px]">
+                    <Carousel interval={2000} duration={500} containerWidth={100} containerHeight={200} containerAngle={-45} childWidth={300} childHeight={300}>
+                        { images.map((image, index) => (<AboutImage key={`carousel-item-${index}`} image={image} index={index} />)) as CarouselElement[] }
+                    </Carousel>
+                </div>
             </div>
+            
         </div>
     )
 }
