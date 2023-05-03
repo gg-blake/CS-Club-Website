@@ -1,6 +1,7 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import GenericParagraph from "@/app/components/core/generic-paragraph";
-import ImageCarousel from "@/app/components/core/image-carousel";
+import {Carousel, CarouselIndexContext, CarouselElement} from "@/app/components/core/generic-carousel";
+import { LangContext } from "@/app/components/context/lang-context";
 
 
 interface ImageData {
@@ -12,6 +13,19 @@ interface ImageData {
 
 interface AboutProps {
     images: ImageData[];
+}
+
+const AboutImage: FC<{image: ImageData, index: number}> = ({ image, index }) => {
+    const { carouselIndex } = useContext(CarouselIndexContext);
+    const { lang } = useContext(LangContext);
+
+    return (
+        <>
+            <img src={image.filename} alt={`${carouselIndex} index`} style={{width: "300px", height: "300px"}} className={`rounded-md object-cover transition-all ${carouselIndex !== index ? "brightness-[25%] shadow-lg" : ""}`} />
+            <p style={{opacity: carouselIndex === index ? 1 : 0}} className="absolute bottom--[20px] text-sm text-secondary-600 font-normal transition-opacity">{image.alt[lang]}</p>
+        </>
+        
+    )
 }
 
 const About: FC<AboutProps> = ({ images }) => {
@@ -29,7 +43,9 @@ const About: FC<AboutProps> = ({ images }) => {
             </div>
             <div className="flex-grow h-full flex justify-center lg:justify-center pl-[35%] pr-[45%] md:pl-[15%] md:pr-[75%] lg:px-[45%]">
                 <div className="w-auto h-auto pr-[100px]">
-                    <ImageCarousel images={images} interval={2000} duration={500} containerWidth={100} containerHeight={200} containerAngle={-45} childWidth={300} childHeight={300} />
+                    <Carousel interval={2000} duration={500} containerWidth={100} containerHeight={200} containerAngle={-45} childWidth={300} childHeight={300}>
+                        { images.map((image, index) => (<AboutImage key={`carousel-item-${index}`} image={image} index={index} />)) as CarouselElement[] }
+                    </Carousel>
                 </div>
             </div>
             
