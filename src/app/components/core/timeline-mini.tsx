@@ -32,7 +32,7 @@ interface TimelineItem {
 const TimelineMini: FC<TimelineItem> = ({ children , className , titles , bulletType=false }) => {
     const [isSelect, setSelect] = useState<boolean>(false);
 
-    let timelineNodeList = children.map((child, index) => <TimelineNode title={ titles && titles[index] } marginTop={(index == 0 ? 30 : 0)} bullet={bulletType}>{ child }</TimelineNode>);
+    let timelineNodeList = children.map((child, index) => <TimelineNode key={`timeline-mini-node-${index}`} title={ titles && titles[index] } marginTop={(index == 0 ? 30 : 0)} bullet={bulletType}>{ child }</TimelineNode>);
 
     return (
         <>

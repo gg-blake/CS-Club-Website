@@ -1,37 +1,48 @@
+import { useContext } from "react";
 import ProfileCard from "@/app/components/core/profile-card";
 import GenericParagraph from "@/app/components/core/generic-paragraph";
+import { LangContext } from "@/app/components/context/lang-context";
 
 export default function Officers() {
+    const { lang } = useContext(LangContext);
+
     return (
-        <div className='w-auto grid grid-flow-row grid-rows-1 flex-shrink h-auto min-h-[60vh] gap-[75px] px-5 pt-12 mt-5'>
-            <ProfileCard name="Sleepy Joe" title="President" src={"/sleepyjoe.jpg"} links={[
-              { name: "Twitter", href: "https://twitter.com/realDonaldTrump" },
-              { name: "Twitch", href: "https://www.twitch.tv/sleepyjoe" },
-              { name: "YouTube", href: "https://www.youtube.com/channel/UC7QXJ4J8D5BYVdUZ5JIHImQ" },
+        <div className='w-auto flex flex-row flex-shrink h-auto min-h-[60vh] gap-[75px] px-5 pb-[200px]'>
+            <ProfileCard name="Jon O'Neil" title={{"en": "President", "jp": "社長"}[lang]} src={"/profile_jon.jpg"} links={[
+              { name: {"en":"Twitter", "jp":"ツイッター"}[lang]!, href: "https://twitter.com/" },
+              { name: {"en":"Twitch", "jp":"トーリチュ"}[lang]!, href: "https://www.twitch.tv/" },
+              { name: {"en":"YouTube", "jp":"ユーチューブ"}[lang]!, href: "https://www.youtube.com/" },
             ]}>
               <GenericParagraph className='text-secondary-500 text-base font-light'>
-              Online YouTube Gaming personality recognized as a skilled player of Call of Duty Zombies, with a particular affinity for the game mode.
-              In Sleepy Joe's online gaming circles, he is known for his strategic thinking and calm demeanor under pressure, which he developed during his decades-long career in politics. He is also recognized for his ability to work well with others, often serving as the de facto team leader during co-op matches.
-              One notable feature of Sleepy Joe's online gaming persona is his penchant for political humor. He enjoys making quips about current events and political figures, often referencing his former political rivals such as Donald Trump and Barack Obama in his in-game banter.
-              Despite his busy schedule as the President of the United States, Sleepy Joe finds time to unwind by playing video games, and he is known for his dedication to the hobby. His fellow gamers respect him not only for his skills but also for his ability to balance his responsibilities as a world leader with his personal interests.
+              {{
+                "en": "Hi, I’m Jon. I started the Computer Science Club in my Sophomore year because I wanted a place for CS people to socialize. Seeing the club grow and develop has been the highlight of my undergrad. You should stop by and get involved :)",
+                "jp": "こんにちは、私はジョンです。私は2年生の時にコンピューターサイエンスクラブを立ち上げました。クラブが成長し発展するのを見るのは私の大学生活のハイライトでした。ぜひ立ち寄って参加してください :)",
+              }[lang]}
               </GenericParagraph>
             </ProfileCard>
             <ProfileCard name="Jordan Peterson" title="Vice President" src={"/jordan.jpg"} links={[
-              { name: "Twitter", href: "https://twitter.com/jordanbpeterson" },
-              { name: "Twitch", href: "https://www.twitch.tv/jordanpeterson" },
-              { name: "YouTube", href: "https://www.youtube.com/channel/UC7QXJ4J8D5BYVdUZ5JIHImQ" },
+              { name: {"en":"Twitter", "jp":"ツイッター"}[lang]!, href: "https://twitter.com/" },
+              { name: {"en":"Twitch", "jp":"トーリチュ"}[lang]!, href: "https://www.twitch.tv/" },
+              { name: {"en":"YouTube", "jp":"ユーチューブ"}[lang]!, href: "https://www.youtube.com/" },
             ]}>
               <GenericParagraph className='text-secondary-500 text-base font-light'>
-              Canadian psychologist, author, and media commentator. He began to receive widespread attention in the late 2010s for his views on cultural and political issues, often described as conservative. Peterson has described himself as a classic British liberal and a traditionalist.
+              {{
+                "en": "Canadian psychologist, author, and media commentator. He began to receive widespread attention in the late 2010s for his views on cultural and political issues, often described as conservative. Peterson has described himself as a classic British liberal and a traditionalist.",
+                "jp": "カナダの心理学者、作家、そしてメディアコメンテーターです。文化や政治の問題に対する意見で、しばしば保守的と表現されることで、2010年代後半に広く注目を集め始めました。ペトソンは、自分自身をクラシックなイギリス・リベラルと伝統主義者と呼んでいます。"
+              }[lang]}
               </GenericParagraph>
             </ProfileCard>
             <ProfileCard name="Elon Musk" title="Treasurer" src={"/elon.jpg"} links={[
-              { name: "Twitter", href: "https://twitter.com/elonmusk" },
-              { name: "Twitch", href: "https://www.twitch.tv/elonmusk" },
-              { name: "YouTube", href: "https://www.youtube.com/channel/UC7QXJ4J8D5BYVdUZ5JIHImQ" },
+              { name: {"en":"Twitter", "jp":"ツイッター"}[lang]!, href: "https://twitter.com/" },
+              { name: {"en":"Twitch", "jp":"トーリチュ"}[lang]!, href: "https://www.twitch.tv/" },
+              { name: {"en":"YouTube", "jp":"ユーチューブ"}[lang]!, href: "https://www.youtube.com/" },
             ]}>
               <GenericParagraph className='text-secondary-500 text-base font-light'>
-              a business magnate and investor. He is the founder, CEO and chief engineer of SpaceX; angel investor, CEO and product architect of Tesla, Inc.; owner and CEO of Twitter, Inc.; founder of the Boring Company; co-founder of Neuralink and OpenAI; and president of the philanthropic Musk Foundation. With an estimated net worth of around $192 billion as of March 27, 2023, primarily from his ownership stakes in Tesla and SpaceX, Musk is the second-wealthiest person in the world, according to both the Bloomberg Billionaires Index and Forbes's real-time billionaires list.
+              
+              {{
+                "en": "a business magnate and investor. He is the founder, CEO and chief engineer of SpaceX; angel investor, CEO and product architect of Tesla, Inc.; owner and CEO of Twitter, Inc.; founder of the Boring Company; co-founder of Neuralink and OpenAI; and president of the philanthropic Musk Foundation. With an estimated net worth of around $192 billion as of March 27, 2023, primarily from his ownership stakes in Tesla and SpaceX, Musk is the second-wealthiest person in the world, according to both the Bloomberg Billionaires Index and Forbes's real-time billionaires list.",
+                "jp": "ビジネスマグネートおよび投資家であり、スペースXの創設者、CEO、主任エンジニア；テスラ社のエンジェル投資家、CEO、製品アーキテクト；Twitter社のオーナー兼CEO；Boring Companyの創設者；NeuralinkおよびOpenAIの共同創設者；そして、慈善団体Musk Foundationの社長です。2023年3月27日時点で約1920億ドルの純資産を持ち、主にテスラとスペースXの株式所有から得たもので、ブルームバーグの「ビリオネア指数」とフォーブスの「リアルタイムのビリオネアリスト」の両方によれば、マスクは世界で2番目に裕福な人物です。"
+              }[lang]}
               </GenericParagraph>
             </ProfileCard>
         </div>

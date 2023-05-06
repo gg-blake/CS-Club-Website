@@ -101,7 +101,10 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
                     <h3 className="inline-block">{ where[lang] }</h3>
                 </span>
                 <GenericButton className={`hover:border-secondary-200 hover:text-secondary-200 ${!user.events.includes(uid) ? "border-primary-500 text-sm text-primary-500 hover:bg-primary-500" : "border-[#29ff4c] text-sm text-[#29ff4c] hover:bg-[#29ff4c]"}`} ref={rsvpButtonRef} onClick={!user.uid ? () => setLoginPrompt(true) : () => RSVP()}>
-                { !user.uid ? <div onClick={() => smoothScroll("events")} >Login to RSVP</div> : !user.events.includes(uid) ? "RSVP" : "RSVP'd" }
+                { !user.uid ? <div onClick={() => smoothScroll("events")} >{{
+                    "en": "Login to RSVP",
+                    "jp": "ログインしてRSVPしてください",
+                }[lang]}</div> : !user.events.includes(uid) ? "RSVP" : "RSVP'd" }
                 </GenericButton>
                 { user.events.includes(uid) && <GenericButton className="border-[#ff0000] text-sm text-[#ff0000] hover:bg-[#ff0000] hover:border-[#ff0000]" onClick={() => unRSVP()}>Un-RSVP</GenericButton> }
             </div>

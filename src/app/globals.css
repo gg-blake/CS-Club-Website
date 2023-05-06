@@ -36,3 +36,71 @@
     }
 }
 
+#cloud-bubble-a {
+    animation: cloud-bubble-a-hover 4s cubic-bezier(.6,0,.62,1) infinite;
+}
+
+#cloud-bubble-b {
+    animation: cloud-bubble-b-hover 4s cubic-bezier(.47,0,.52,1) infinite;
+}
+
+#cloud-bubble-c {
+    animation: cloud-bubble-c-hover 4s cubic-bezier(.38,0,.4,.99) infinite;
+}
+
+@keyframes cloud-bubble-hover {
+    from { transform: rotate(0deg) translateX(5px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(5px) rotate(-360deg); }
+}
+
+#cloud-bubble-main {
+    animation: cloud-bubble-main-hover 4s cubic-bezier(.6,0,.62,1) infinite;
+}
+
+@keyframes cloud-bubble-main-hover {
+    0% { 
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes cloud-bubble-a-hover {
+    0% { 
+        transform: translate(-10px, 0px);
+    }
+    50% {
+        transform: translate(-10px, 10px);
+    }
+    100% {
+        transform: translate(-10px, 0px);
+    }
+}
+
+@keyframes cloud-bubble-b-hover {
+    0% { 
+        transform: translate(-15px, 0px);
+    }
+    50% {
+        transform: translate(-15px, 10px);
+    }
+    100% {
+        transform: translate(-15px, 0px);
+    }
+}
+
+@keyframes cloud-bubble-c-hover {
+    0% { 
+        transform: translate(-20px, 0px);
+    }
+    50% {
+        transform: translate(-20px, 10px);
+    }
+    100% {
+        transform: translate(-20px, 0px);
+    }
+}

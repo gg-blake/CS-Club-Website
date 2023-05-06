@@ -1,4 +1,3 @@
-import useEventListener from '@/app/components/hooks/useEventListener';
 import { FC, useRef, useContext, useState } from 'react';
 import { LangContext } from '@/app/components/context/lang-context';
 import { AuthContext } from '@/app/components/context/auth-context';
@@ -31,7 +30,7 @@ const NavBar: FC<NavBarProps> = ({ className, ids }) => {
         <div className={`w-full h-auto flex justify-start flex-col md:flex-row md:justify-between items-center z-50 ${ className }`}>
             
             <div className="w-auto flex sm:flex-row gap-3 font-light">
-            { ids[lang].map((id: string, index: number) => <div onClick={() => smoothScroll(id)} className="w-auto text-secondary-200 hover:text-primary-500 hover:underline underline-offset-4 transition-colors" >{id}</div>) }
+            { ids[lang].map((id: string, index: number) => <div key={`navbar-item-${index}`} onClick={() => smoothScroll(id)} className="w-auto text-secondary-200 hover:text-primary-500 hover:underline underline-offset-4 transition-colors" >{id}</div>) }
             </div>
             <div className='w-auto h-auto flex items-center gap-2 pr-5 text-secondary-200 text-sm font-extrabold'>
                 {/* English

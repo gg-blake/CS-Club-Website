@@ -122,7 +122,7 @@ export default function MatrixCanvas({ scroll } : { scroll: number }) {
             // for each column put a random character at the end
             ypos.forEach((y, ind) => {
                 // generate a random character
-                const num = getRandomInt(0xfeff3041, 0xfeff30fe);
+                const num = getRandomInt(0xfeff30A0, 0xfeff30FF);
                 const text = String.fromCharCode(num);
 
             

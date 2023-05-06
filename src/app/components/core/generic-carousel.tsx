@@ -192,6 +192,7 @@ const Carousel: FC<CarouselProps> = (props: CarouselProps) => {
     const carouselElements = Object.values(containerRefsMap.current).map((element, index) => {
         return (
         <div 
+        key={`carousel-element-${index}`}
         style={getElementStyle(element, index, props.duration, props.containerAngle)} 
         className="absolute w-auto h-auto transition-[transform_opacity] opacity-1">
         {element.node}
