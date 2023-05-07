@@ -50,7 +50,7 @@ export default function Splash({ title, desc } : { title : LangContent , desc : 
                         <ThoughtBubble>
                             {{
                                 'en': 'Find us at UHall, Room 2320',
-                                'jp': '',
+                                'jp': 'ゆにばーしてい・ほーるの2320部屋にいます',
                             }[lang] as string}
                         </ThoughtBubble>
                     </span>

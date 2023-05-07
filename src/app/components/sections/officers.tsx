@@ -16,7 +16,7 @@ export default function Officers() {
               <GenericParagraph className='text-secondary-500 text-base font-light'>
               {{
                 "en": "Hi, I’m Jon. I started the Computer Science Club in my Sophomore year because I wanted a place for CS people to socialize. Seeing the club grow and develop has been the highlight of my undergrad. You should stop by and get involved :)",
-                "jp": "こんにちは、私はジョンです。私は2年生の時にコンピューターサイエンスクラブを立ち上げました。クラブが成長し発展するのを見るのは私の大学生活のハイライトでした。ぜひ立ち寄って参加してください :)",
+                "jp": "こんにちは、私はジョンです。私は2ねんせいのときにこんぴゅーたーさいえんすくらぶをたちあげました。くらぶがせいちょうしはってんするのをみるのはわたしのだいがくせいかつのはいらいとでした。ぜひたちよってさんかしてください :)",
               }[lang]}
               </GenericParagraph>
             </ProfileCard>

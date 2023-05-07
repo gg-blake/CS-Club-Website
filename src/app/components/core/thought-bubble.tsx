@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-const ThoughtBubble: FC<{ children : string }> = ({ children }) => {
+const ThoughtBubble: FC<{ children : any | any[], className? : string }> = ({ children, className }) => {
     return (
-        <div className='w-auto h-auto  translate-y-[-90px] translate-x-[30px] relative'>
+        <div className={`w-auto h-auto  translate-y-[-90px] translate-x-[30px] relative ${className}`}>
             <div id="cloud-bubble-main" className='w-auto h-auto py-[10px] rounded-full border-[2px] border-secondary-400 bg-secondary-200 text-primary-300 font-bold px-[15px] flex justify-center text-center'>
                 { children }
             </div>

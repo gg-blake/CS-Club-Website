@@ -5,6 +5,7 @@ import GenericTimestamp from "@/app/components/core/generic-timestamp";
 import GenericButton from "@/app/components/core/generic-button";
 import LangContent from "@/app/components/types/lang-content";
 import { LangContext } from "@/app/components/context/lang-context";
+import ThoughtBubble from "@/app/components/core/thought-bubble";
 
 
 interface Platform {
@@ -53,7 +54,7 @@ const testAnnouncements: AnnouncementListing[] = [
         postUser: "TheSwiginator",
         message: {
             "en": "Hi all, just wanted to give a thanks to everyone who was at our most recent LeetCode competition! The competition was fierce! Next time we plan to run concurrent competitions for graduate and undergraduate students.",
-            "jp": "こんにちは、最近のLeetCodeコンテストに参加したすべての人に感謝したいと思います！競争は激しかったです！次回は、大学院生と学部生の両方の競争を同時に実施する予定です。",
+            "jp": "こんにちは、さいきんのLeetCodeコンテストにさんかしたすべてのひとにかんしゃしたいとおもいます! 次回は、大学院生と学部生の両方の競争を同時に実施する予定です。",
         },
         href: "https://www.google.com"
     },
@@ -98,12 +99,32 @@ const Announcement: FC<AnnouncementListing> = ({ time, date, platform , channel,
 
 export default function Announcements() {
     const [isSelect, setIsSelect] = useState<boolean>(false);
+    const { lang } = useContext(LangContext);
 
     return (
+    <div>
+        <ThoughtBubble className="w-[200px] h-auto text-sm absolute translate-x-[calc(100vw_-_500px)] flex">
+        {{
+            "en": "You can find all of our announcements on our",
+            "jp": "すべてのはっぴょは,"
+        }[lang]}
+        &nbsp;
+        <a className="text-violet-400 underline underline-offset-4 hover:text-violet-700" href="https://discord.gg/T26dc7tc" target="_blank">{{
+            "en": "Discord Server",
+            "jp": <>Discordのサーバー&nbsp;</>
+        }[lang]}</a>
+        {{
+            "en": "!",
+            "jp": "で見つけることができます!"
+        }[lang]}
+        </ThoughtBubble>
         <div className="w-full h-auto max-h-screen overflow-y-scroll flex flex-col gap-x-4 relative text-4xl text-secondary-200 font-bold mt-[25px]">
+            
             <TimelineMini bulletType={true}>
             { testAnnouncements.map( (announcement: AnnouncementListing, index: number) => <Announcement key={"EventDeckCard-" + index} {...announcement} /> ) }
             </TimelineMini>
         </div>
+    </div>
+        
     )
 }

@@ -16,26 +16,26 @@ const inter = Inter({ subsets: ['latin'] });
 const SECTION_TITLES_EN = ["About", "Announcements",  "Events", "Officers"];
 const SPLASH_TITLE_EN = "CS CLUB";
 const SPLASH_DESC_EN = "UMass Boston's official center for technology-driven students!";
-const SECTION_TITLES_JP = ["サクルニツイテ", "オシラセ", "イベント", "ヤクイン"];
-const SPLASH_TITLE_JP = "CSのサクル";
-const SPLASH_DESC_JP = "テクノロジーが好きなウマッスボストンのガクセイが会うところ！";
+const SECTION_TITLES_JP = ["サークルニツイテ", "オシラセ", "イベント", "ヤクイン"];
+const SPLASH_TITLE_JP = "CSのサークル";
+const SPLASH_DESC_JP = "テクノロジーが好きなUMass ボストンのガクセイが会うところ！";
 const SECTION_TITLES_ES = ["AcercaDe", "Anuncios", "Eventos", "Oficiales"];
 const SPLASH_TITLE_ES = "CLUB de INFORMÁTICA";
 const SPLASH_DESC_ES = "El centro oficial de UMass Boston para estudiantes impulsados por la tecnología";
 
 const ABOUT_IMAGE_CAROUSEL_DATA = [
   {
-    filename: "/carousel1.jpg",
+    filename: "/carousel2.jpg",
     alt: {
-      "en": "Cover 1",
-      "jp": "表紙1"
+      "en": "Celebrating the finale of our first group project competition",
+      "jp": "最初のグループプロジェクトコンテストのフィナーレを祝う"
     }
   },
   {
-    filename: "/carousel2.jpg",
+    filename: "/carousel1.jpg",
     alt: {
-      "en": "Cover 1",
-      "jp": "表紙1"
+      "en": "Our first ever club selfie!",
+      "jp": "初めてのクラブセルフィー！"
     }
   },
   {
@@ -48,8 +48,8 @@ const ABOUT_IMAGE_CAROUSEL_DATA = [
   {
     filename: "/carousel4.jpg",
     alt: {
-      "en": "Cover 4",
-      "jp": "表紙4"
+      "en": "Don't worry, the marker came off!",
+      "jp": "心配しないで、マーカーは取れました！"
     }
   },
 ]
@@ -71,11 +71,11 @@ export default function Home() {
   useEffect(() => {
     addEventListener('scroll', (e: Event) => {
       setTouchingTop(window.scrollY < window.innerHeight);
-      if (window.scrollY > window.innerHeight && window.scrollY < window.innerHeight * 1.5) {
+      if (window.scrollY > window.innerHeight && window.scrollY < window.innerHeight * 2.5) {
         setBackgroundImage(0);
-      } else if (window.scrollY < window.innerHeight * 3.5) {
+      } else if (window.scrollY > window.innerHeight * 1.5 && window.scrollY < window.innerHeight * 4.0) {
         setBackgroundImage(1);
-      } else if (window.scrollY < window.innerHeight * 5.5) {
+      } else if (window.scrollY > window.innerHeight * 3.5 && window.scrollY < window.innerHeight * 5.5) {
         setBackgroundImage(2);
       } else {
         setBackgroundImage(-1);
