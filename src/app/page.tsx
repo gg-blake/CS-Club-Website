@@ -71,9 +71,9 @@ export default function Home() {
   useEffect(() => {
     addEventListener('scroll', (e: Event) => {
       setTouchingTop(window.scrollY < window.innerHeight);
-      if (window.scrollY > window.innerHeight && window.scrollY < window.innerHeight * 2.5) {
+      if (window.scrollY > (window.innerHeight / 2) && window.scrollY < window.innerHeight * 2.0) {
         setBackgroundImage(0);
-      } else if (window.scrollY > window.innerHeight * 1.5 && window.scrollY < window.innerHeight * 4.0) {
+      } else if (window.scrollY > window.innerHeight * 2.0 && window.scrollY < window.innerHeight * 3.5) {
         setBackgroundImage(1);
       } else if (window.scrollY > window.innerHeight * 3.5 && window.scrollY < window.innerHeight * 5.5) {
         setBackgroundImage(2);

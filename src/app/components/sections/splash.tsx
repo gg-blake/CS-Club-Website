@@ -9,9 +9,11 @@ import ThoughtBubble from '../core/thought-bubble';
 export default function Splash({ title, desc } : { title : LangContent , desc : LangContent}) {
     const { lang } = useContext(LangContext);
     const [scroll, setScroll] = useState(0);
+    const [touching , setTouching] = useState(true);
 
     useEffect(() => {
         addEventListener('scroll', () => {
+            setTouching(window.scrollY < window.innerHeight / 3);
             const position = window.pageYOffset;
             const splashElement = document.getElementById('splash');
             const matrixElement = document.getElementById('matrix');
@@ -58,10 +60,17 @@ export default function Splash({ title, desc } : { title : LangContent , desc : 
                     <p className='text-xl text-secondary-100 px-2 py-2'>{desc[lang]}</p>
                     
                 </div>
-                
             </div>
+            <div className="absolute bottom-[20px] z-10 w-full h-auto flex flex-col items-center ">
+                {touching && <><span className="text-base text-secondary-100 animate-pulse font-medium animate-bounce">{{
+                    "en": "Scroll to learn more",
+                    "jp": "すくろーるしてもっとおしえる",
+                }[lang]}</span>
+                <svg className="animate-bounce animate-pulse w-6 h-6 text-secondary-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </>}
             </div>
-            </>
+        </div>
+        </>
         
     )
 }

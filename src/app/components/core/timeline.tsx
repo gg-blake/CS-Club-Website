@@ -14,7 +14,7 @@ function TimelineNode({ children , title , marginTop=0 } : { children : JSX.Elem
         <div className={`w-full h-auto transition-all mt-[${marginTop}px]`}>
             <div className='flex items-center'>
                 <div className="absolute translate-x-[-30px] w-[20px] h-[20px] rounded-full bg-primary-500" />
-                { title ? <GlitchText className='text-4xl sm:text-6xl md:text-8xl font-bold text-secondary-200 mt-[35px]'>{ title[lang] }</GlitchText> : null }
+                { title ? <GlitchText className='text-4xl sm:text-6xl md:text-8xl font-bold text-secondary-200 mt-[100px]'>{ title[lang] }</GlitchText> : null }
             </div>
             { children }
         </div>

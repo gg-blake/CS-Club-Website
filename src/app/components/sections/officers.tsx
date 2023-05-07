@@ -7,7 +7,7 @@ export default function Officers() {
     const { lang } = useContext(LangContext);
 
     return (
-        <div className='w-auto flex flex-row flex-shrink h-auto min-h-[60vh] gap-[75px] px-5 pb-[200px]'>
+        <div className='w-auto flex flex-row flex-shrink h-auto min-h-[60vh] gap-[75px] px-5 pb-[200px] mt-[50px]'>
             <ProfileCard name="Jon O'Neil" title={{"en": "President", "jp": "社長"}[lang]} src={"/profile_jon.jpg"} links={[
               { name: {"en":"Twitter", "jp":"ツイッター"}[lang]!, href: "https://twitter.com/" },
               { name: {"en":"Twitch", "jp":"トーリチュ"}[lang]!, href: "https://www.twitch.tv/" },
