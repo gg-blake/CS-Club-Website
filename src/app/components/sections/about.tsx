@@ -14,7 +14,7 @@ const SUBSECTION_CONTENT = [
         },
         desc: {
             "en": "Whether you are a freshman computer science major or you are a senior on your way out, the CS Club provides a multitude of resources to get your foot in the door of the industry. We plan on hosting networking events and workshops where you can chat with highly skilled professionals in the field. We also hold events called Resume Roasts, in which fellow club members are tasked with constructively critiquing students' resumes (with some healthy comedic input, of course) to better prepare students for internships and job searching. Workshops, Resume Roasts, and more are coming in the future so if you are interested, be sure to check out our live event listings.",
-            "jp": "コンピュータサイエンス学科の新入生や卒業間近のシニアにとって、CSサークルは産業界への足がかりになる多くのリソースを提供しています。また、リレキショ・ローストというイベントでは、サークルメンバー同士が学生たちの履歴書を建設的に制限します。 興味がある方は、さまざまなイベントをらいぶで確認することができますので、ぜひ参加してみてください。",
+            "jp": "コンピュータサイエンス学科の新入生でも卒業間近の4年生でも、「シ・エス」サークルは産業界への足がかりになる多くのリソースを提供しています。また、リレキショ・ローストというイベントでは、サークルメンバー同士が学生たちの履歴書を建設的に制限します。 興味がある方は、さまざまなイベントをらいぶで確認することができますので、ぜひ参加してみてください。",
         }
     },
     {
@@ -87,7 +87,7 @@ const About: FC<AboutProps> = ({ images }) => {
                 <GenericParagraph className='text-secondary-400 text-lg font-light leading-snug'>
                 {{
                     "en": "Welcome to the UMass Boston Computer Science Club! We are a club dedicated to connecting students interested in all things technology! Here, we want to create a healthy, inclusive space to foster discussion on emerging technologies and innovation. Non-computer science majors are welcome as well. Please bring your computer and your passion. Our club centers around two aspects of computer science: career and experience.",
-                    "jp": "ウマッスボストンのCSサークルへようこそ。私たちは、テクノロジーに興味を持つ学生たちをつなぐことに専念するサークルです。ここでは、新興技術やイノベーションに関する議論を促進するために、健全かつ包括的な空間を作りたいと考えています。また、コンピュータサイエンスの専攻でない方も大歓迎です。あなたのパソコンと情熱を持って、是非参加してください。私たちのサークルは、コンピュータサイエンスのキャリアと経験の2つの側面を中心に展開しています。",
+                    "jp": "マサチューセッツ大学ボストン校の「シ・エス」サークルへようこそ。私たちはテクノロジーなどに興味を持っている学生向けのサークルです。ここでは、新興技術やイノベーションに関する議論を促進するために、健全かつ包括的な空間を作りたいと考えています。また、コンピュータサイエンスの専攻でない方も大歓迎です。パソコンと情熱を持ちながら是非ご参加してください。このサークルは、コンピュータサイエンスのキャリアと経験の2つの側面を中心に展開しています。",
                 }[lang]}
                 </GenericParagraph>
                 <br />
