@@ -34,7 +34,6 @@ const fetchEvents = getDocs(collection(db, "events"))
 
 const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, setLoginPrompt }) => {
     const { title, desc, start, end, where, who } = data;
-    const [isSelect, setIsSelect] = useState<boolean>(false);
     const { user, setUser } = useContext(AuthContext);
     const rsvpButtonRef = useRef<HTMLDivElement>(null);
     const { lang } = useContext(LangContext);
@@ -90,23 +89,31 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
 
     return (
         <div className="w-full h-auto grid grid-rows-[auto_auto_1fr] lg:grid-cols-[auto_auto_1fr] mb-[25px] gap-[3px] text-base bg-transparent relative z-20">
-            <div className="w-auto min-w-[18vw] h-auto flex flex-col">
-                <h2  className={`text-2xl font-semibold text-secondary-200 w-full leading-none my-1`}>{title[lang]}</h2>
-                <GenericTimestamp className="pl-[5px] font-thin" date={parsedDate} time={parsedTime} icon={true} />
-                <span className="font-thin whitespace-nowrap w-auto flex flex-row items-center gap-2">
-                    <svg focusable="false" width="20" height="24" viewBox="0 0 20 24" className="stroke-secondary-200 fill-none scale-[80%]">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                        <circle cx="12" cy="9" r="2.5"></circle>
-                    </svg>
-                    <h3 className="inline-block">{ where[lang] }</h3>
-                </span>
-                <GenericButton className={`hover:border-secondary-200 hover:text-secondary-200 ${!user.events.includes(uid) ? "border-primary-500 text-sm text-primary-500 hover:bg-primary-500" : "border-[#29ff4c] text-sm text-[#29ff4c] hover:bg-[#29ff4c]"}`} ref={rsvpButtonRef} onClick={!user.uid ? () => setLoginPrompt(true) : () => RSVP()}>
-                { !user.uid ? <div onClick={() => smoothScroll("events")} >{{
-                    "en": "Login to RSVP",
-                    "jp": "ログインしてRSVPしてください",
-                }[lang]}</div> : !user.events.includes(uid) ? "RSVP" : "RSVP'd" }
-                </GenericButton>
-                { user.events.includes(uid) && <GenericButton className="border-[#ff0000] text-sm text-[#ff0000] hover:bg-[#ff0000] hover:border-[#ff0000]" onClick={() => unRSVP()}>Un-RSVP</GenericButton> }
+            <div className=" min-w-[18vw] h-auto flex flex-col items-start gap-1">
+                <div className="flex flex-row h-[12px] items-center gap-2 pl-[1px] mb-1 mt-[10px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" className="h-full w-auto scale-125 fill-secondary-700"><path d="M180 976q-24 0-42-18t-18-42V296q0-24 18-42t42-18h65v-60h65v60h340v-60h65v60h65q24 0 42 18t18 42v620q0 24-18 42t-42 18H180Zm0-60h600V486H180v430Zm0-490h600V296H180v130Zm0 0V296v130Zm300 230q-17 0-28.5-11.5T440 616q0-17 11.5-28.5T480 576q17 0 28.5 11.5T520 616q0 17-11.5 28.5T480 656Zm-160 0q-17 0-28.5-11.5T280 616q0-17 11.5-28.5T320 576q17 0 28.5 11.5T360 616q0 17-11.5 28.5T320 656Zm320 0q-17 0-28.5-11.5T600 616q0-17 11.5-28.5T640 576q17 0 28.5 11.5T680 616q0 17-11.5 28.5T640 656ZM480 816q-17 0-28.5-11.5T440 776q0-17 11.5-28.5T480 736q17 0 28.5 11.5T520 776q0 17-11.5 28.5T480 816Zm-160 0q-17 0-28.5-11.5T280 776q0-17 11.5-28.5T320 736q17 0 28.5 11.5T360 776q0 17-11.5 28.5T320 816Zm320 0q-17 0-28.5-11.5T600 776q0-17 11.5-28.5T640 736q17 0 28.5 11.5T680 776q0 17-11.5 28.5T640 816Z"/></svg>
+                    <GenericTimestamp className="text-secondary-700 font-light text-xs pl-[2px]" date={parsedDate.split('-').join('/')} time={parsedTime} />
+                </div>
+                <div className="flex flex-row h-[12px] items-center gap-2 pl-[1px] mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" className="h-full w-auto scale-125 fill-secondary-700"><path d="M480.089 566Q509 566 529.5 545.411q20.5-20.588 20.5-49.5Q550 467 529.411 446.5q-20.588-20.5-49.5-20.5Q451 426 430.5 446.589q-20.5 20.588-20.5 49.5Q410 525 430.589 545.5q20.588 20.5 49.5 20.5ZM480 897q133-121 196.5-219.5T740 504q0-117.79-75.292-192.895Q589.417 236 480 236t-184.708 75.105Q220 386.21 220 504q0 75 65 173.5T480 897Zm0 79Q319 839 239.5 721.5T160 504q0-150 96.5-239T480 176q127 0 223.5 89T800 504q0 100-79.5 217.5T480 976Zm0-472Z"/></svg>
+                    <GenericTimestamp className="text-secondary-700 font-light text-xs pl-[2px]" date={ where[lang] } />
+                </div>
+                <h2  className={`text-2xl font-semibold text-secondary-200 w-full leading-none`}>{ title[lang] }</h2>
+                <div className="w-full flex justify-start mt-[2px] items-center">
+                    <GenericButton className={`text-xs group transition-all flex items-center gap-0 hover:gap-2 active:hover:bg-transparent border-primary-500 text-primary-500 hover:border-secondary-100 hover:text-secondary-100  ${!user.events.includes(uid) ? "hover:bg-primary-500 active:hover:border-red-400 active:hover:text-red-400" : "hover:bg-red-400 active:hover:border-secondary-400 active:hover:text-secondary-400"}`} ref={rsvpButtonRef} onClick={!user.uid ? "" : user.events.includes(uid) ? () => unRSVP() : () => RSVP()}>
+                    <div className="w-0 h-full group-hover:w-[15px] transition-all overflow-clip">
+                        { !user.events.includes(uid) ?
+                            <svg className={`w-[15px] h-auto fill-transparent group-hover:fill-secondary-50 group-hover:transparent  transition-all ${!user.events.includes(uid) ? "group-active:group-hover:fill-red-400" : "group-active:group-hover:fill-secondary-400"}`} xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M321 896q-24 0-42-18t-18-42V736h124V609q-38 3-76-10.5T241 556v-58h-50L60 367q36-34 86-55.5T248 290q30 0 68.5 9.5T385 330v-74h455v535q0 44-30.5 74.5T735 896H321Zm124-160h245v55q0 20 12.5 32.5T735 836q20 0 32.5-12.5T780 791V316H445v57l241 241v43h-43L517 531l-17 20q-13 15-26 23t-29 15v147ZM218 438h83v89q17 11 33.5 16.5T368 549q25 0 51-13.5t38-27.5l17-20-69-69q-32-32-72-50.5T248 350q-27 0-49 6.5T154 374l64 64Zm412 358H321v40h323q-6-6-10-16.5t-4-23.5Zm-309 40v-40 40Z"/></svg>
+                            :
+                            <svg className={`w-[15px] h-auto fill-transparent group-hover:fill-secondary-50 group-hover:transparent  transition-all ${!user.events.includes(uid) ? "group-active:group-hover:fill-red-400" : "group-active:group-hover:fill-secondary-400"}`} xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m815 1000-64-64H180q-24.75 0-42.375-17.625T120 876V305l-54-54 43-43 749 749-43 43ZM180 876h511L180 364v512Zm660-22-60-60V373H359L202 216h578q24.75 0 42.375 17.625T840 276v578Z"/></svg>
+                        }
+                    </div>
+                    { !user.uid ? {
+                        "en": "Login to RSVP",
+                        "jp": "ログインしてRSVPしてください",
+                    }[lang] : !user.events.includes(uid) ? "RSVP" : "unRSVP" }
+                    </GenericButton>
+                </div>
             </div>
             <div className="hidden lg:visible lg:flex w-[2px] h-[92%] mt-3 my-3 mx-2 rounded-full bg-secondary-800 self-center  " />
             <GenericParagraph className="text-secondary-200 text-[.95rem] md:text-[1.1rem] flex-shrink opacity-50 hover:opacity-100 transition-opacity leading-tight font-light overflow-y-scroll">{ desc[lang] }</GenericParagraph>

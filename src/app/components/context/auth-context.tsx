@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import "@/app/globals.css";
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
@@ -9,6 +10,8 @@ import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../../config/firebase";
 import { getDoc } from "firebase/firestore";
 import { UserCredential } from "firebase/auth";
+import { LangContext } from "./lang-context";
+import { LATIN, KANA } from "@/app/styles/fonts";
 
 interface UserType {
   email: string | null;
@@ -34,6 +37,7 @@ export const useAuth = () => useContext<any>(AuthContext);
 export const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<UserType>({ email: null, uid: null, events: [] });
   const [loading, setLoading] = useState<boolean>(true);
+  const { lang } = useContext(LangContext);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -85,7 +89,9 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
 
   return (
     <AuthContext.Provider value={{ user, setUser, signUp, logIn, logOut }}>
+      <div className={`bg-secondary-900 overflow-x-hidden w-screen ${lang !== "jp" ? LATIN.className : KANA.className}`}>
       {loading ? null : children}
+      </div>
     </AuthContext.Provider>
   );
 };

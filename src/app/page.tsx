@@ -68,6 +68,9 @@ export default function Home() {
   const [touchingTop, setTouchingTop] = useState(true);
   const [backgroundImage, setBackgroundImage] = useState<number>(-1);
 
+
+  
+
   useEffect(() => {
     addEventListener('scroll', (e: Event) => {
       setTouchingTop(window.scrollY < window.innerHeight);
@@ -76,6 +79,9 @@ export default function Home() {
       } else if (window.scrollY > window.innerHeight * 2.0 && window.scrollY < window.innerHeight * 3.5) {
         setBackgroundImage(1);
       } else if (window.scrollY > window.innerHeight * 3.5 && window.scrollY < window.innerHeight * 5.5) {
+        const r = document.querySelector(':root');
+        
+
         setBackgroundImage(2);
       } else {
         setBackgroundImage(-1);
@@ -89,7 +95,6 @@ export default function Home() {
   return (
     <LangContextProvider>
       <AuthContextProvider>
-        <div className={`bg-secondary-900 overflow-x-hidden w-screen  ${inter.className}`}>
           <NavBar className={`text-lg fixed top-0 bg-secondary-900 p-2 md:pl-6 md:py-1 ${touchingTop ? "bg-opacity-0" : " border-b-[1px] border-secondary-700 bg-opacity-50 backdrop-blur-lg shadow-lg"}`} ids={{"en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP, "es": SECTION_TITLES_ES}} />
           <Splash title={{'en': SPLASH_TITLE_EN, 'jp': SPLASH_TITLE_JP, 'es': SPLASH_TITLE_ES}} desc={{'en': SPLASH_DESC_EN, 'jp': SPLASH_DESC_JP, 'es': SPLASH_TITLE_ES}} />
           <BackgroundProvider backgroundImage={backgroundImage} />
@@ -99,7 +104,6 @@ export default function Home() {
             <Events />
             <Officers />
           </Timeline>
-        </div>
       </AuthContextProvider>
     </LangContextProvider>
   )

@@ -68,8 +68,6 @@ const Login: FC = () => {
         else setRegisterDetails({...registerDetails, [event.target.name]: event.target.value});
     }
 
-    
-
     const handleSubmit = async () => {
         if (isLogin) {
             if (loginDetails.email === "" || loginDetails.password === "") {
@@ -120,7 +118,6 @@ const Login: FC = () => {
         }
         
     }
-
 
     return (
         <div id="login" ref={thisElementRef} className={`w-full h-auto max-w-[500px] text-base overflow-clip relative flex flex-col items-end gap-2`}>

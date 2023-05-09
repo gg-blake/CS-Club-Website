@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-primary-50: 207deg 100% 94%;
+    --color-primary-100: 207deg 100% 86%;
+    --color-primary-200: 206deg 100% 76%;
+    --color-primary-300: 204deg 100% 64%;
+    --color-primary-400: 201deg 100% 50%;
+    --color-primary-500: 205deg 100% 50%;
+    --color-primary-600: 209deg 100% 50%;
+    --color-primary-700: 213deg 100% 50%;
+    --color-primary-800: 216deg 98% 47%;
+    --color-primary-900: 230deg 75% 46%;
+    --color-secondary: 111, 114, 185;
+    /* ... */
+  }
+}
+
 .fade-in {
     transition: opacity .5s ease-in-out, margin-top .5s ease-in-out;
     animation: fade-in;

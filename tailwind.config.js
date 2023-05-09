@@ -13,16 +13,16 @@ module.exports = {
     extend: {
       colors: {
         "primary": {
-          "50": "#e2f2ff",
-          "100": "#b9dfff",
-          "200": "#87cbff",
-          "300": "#49b6ff",
-          "400": "#00a5ff",
-          "500": "#0095ff",
-          "600": "#0085ff",
-          "700": "#0072ff",
-          "800": "#025fee",
-          "900": "#1e3bce"
+          "50": 'hsl(var(--color-primary-50))',
+          "100": "hsl(var(--color-primary-100))",
+          "200": "hsl(var(--color-primary-200))",
+          "300": "hsl(var(--color-primary-300))",
+          "400": "hsl(var(--color-primary-400))",
+          "500": "hsl(var(--color-primary-500))",
+          "600": "hsl(var(--color-primary-600))",
+          "700": "hsl(var(--color-primary-700))",
+          "800": "hsl(var(--color-primary-800))",
+          "900": "hsl(var(--color-primary-900))"
         },
         "secondary": {
           "50": "#f9f9f9",
