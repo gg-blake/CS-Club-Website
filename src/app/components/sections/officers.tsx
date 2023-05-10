@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import ProfileCard from "@/app/components/core/profile-card";
-import GenericParagraph from "@/app/components/core/generic-paragraph";
+import ProfileCard from "@/app/components/core/ProfileCard";
+import GenericParagraph from "@/app/components/core/GenericParagraph";
 import { LangContext } from "@/app/components/context/lang-context";
 
 export default function Officers() {
@@ -8,7 +8,7 @@ export default function Officers() {
 
     return (
         <div className='w-auto flex flex-row flex-shrink h-auto min-h-[60vh] gap-[75px] px-5 pb-[200px] mt-[50px]'>
-            <ProfileCard name="Jon O'Neil" title={{"en": "President", "jp": "社長"}[lang]} src={"/profile_jon.jpg"} links={[
+            <ProfileCard name={{"en": "John O'Neil", "jp": "ジョン・オーニール"}[lang]} title={{"en": "President", "jp": "社長"}[lang]} src={"/profile_jon.jpg"} links={[
               { name: {"en":"Twitter", "jp":"ツイッター"}[lang]!, href: "https://twitter.com/" },
               { name: {"en":"Twitch", "jp":"トーリチュ"}[lang]!, href: "https://www.twitch.tv/" },
               { name: {"en":"YouTube", "jp":"ユーチューブ"}[lang]!, href: "https://www.youtube.com/" },
@@ -20,7 +20,7 @@ export default function Officers() {
               }[lang]}
               </GenericParagraph>
             </ProfileCard>
-            <ProfileCard name="Jordan Peterson" title="Vice President" src={"/jordan.jpg"} links={[
+            <ProfileCard name={{"en": "Jordan Peterson", "jp": "ジョーダン・ピータソン"}[lang]} title={{"en": "Vice President", "jp": "副社長"}[lang]} src={"/jordan.jpg"} links={[
               { name: {"en":"Twitter", "jp":"ツイッター"}[lang]!, href: "https://twitter.com/" },
               { name: {"en":"Twitch", "jp":"トーリチュ"}[lang]!, href: "https://www.twitch.tv/" },
               { name: {"en":"YouTube", "jp":"ユーチューブ"}[lang]!, href: "https://www.youtube.com/" },
@@ -32,7 +32,7 @@ export default function Officers() {
               }[lang]}
               </GenericParagraph>
             </ProfileCard>
-            <ProfileCard name="Elon Musk" title="Treasurer" src={"/elon.jpg"} links={[
+            <ProfileCard name={{"en": "Elon Musk", "jp": "イロン・マスク"}[lang]} title={{"en": "Treasurer", "jp": "会計"}[lang]} src={"/elon.jpg"} links={[
               { name: {"en":"Twitter", "jp":"ツイッター"}[lang]!, href: "https://twitter.com/" },
               { name: {"en":"Twitch", "jp":"トーリチュ"}[lang]!, href: "https://www.twitch.tv/" },
               { name: {"en":"YouTube", "jp":"ユーチューブ"}[lang]!, href: "https://www.youtube.com/" },
