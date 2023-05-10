@@ -58,7 +58,7 @@ const AboutImage: FC<{image: ImageData, index: number}> = ({ image, index }) => 
     return (
         <>
             <img src={image.filename} alt={`${carouselIndex} index`} style={{width: "300px", height: "300px"}} className={`rounded-md object-cover transition-all ${carouselIndex !== index ? "brightness-[25%] shadow-lg" : ""}`} />
-            { carouselIndex === index && <GenericParagraph className="absolute bottom--[20px] text-sm font-light text-secondary-400 font-normal transition-opacity">{image.alt[lang]}</GenericParagraph>}
+            { carouselIndex === index && <GenericParagraph className="absolute bottom--[20px] text-sm font-light text-secondary-400 transition-opacity">{image.alt[lang]}</GenericParagraph>}
         </>
         
     )
