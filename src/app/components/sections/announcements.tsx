@@ -1,11 +1,12 @@
 import "@/app/module.event-deck.css";
 import { FC, useState, useContext } from "react";
-import TimelineMini from "@/app/components/core/timeline-mini";
-import GenericTimestamp from "@/app/components/core/generic-timestamp";
-import GenericButton from "@/app/components/core/generic-button";
+import TimelineMini from "@/app/components/core/TimelineMini";
+import GenericTimestamp from "@/app/components/core/GenericTimestamp";
+import GenericButton from "@/app/components/core/GenericButton";
 import LangContent from "@/app/components/types/lang-content";
 import { LangContext } from "@/app/components/context/lang-context";
-import ThoughtBubble from "@/app/components/core/thought-bubble";
+import ThoughtBubble from "@/app/components/core/ThoughtBubble";
+import StyledAnchor from "@/app/components/core/StyledAnchor";
 
 
 interface Platform {
@@ -60,9 +61,12 @@ const testAnnouncements: AnnouncementListing[] = [
     },
 ];
 
+const ButtonIcon = <svg className={`w-[15px] h-auto fill-transparent group-hover:fill-secondary-50 group-hover:transparent  transition-all group-active:group-hover:fill-secondary-400`} xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M480.118 726Q551 726 600.5 676.382q49.5-49.617 49.5-120.5Q650 485 600.382 435.5q-49.617-49.5-120.5-49.5Q409 386 359.5 435.618q-49.5 49.617-49.5 120.5Q310 627 359.618 676.5q49.617 49.5 120.5 49.5Zm-.353-58Q433 668 400.5 635.265q-32.5-32.736-32.5-79.5Q368 509 400.735 476.5q32.736-32.5 79.5-32.5Q527 444 559.5 476.735q32.5 32.736 32.5 79.5Q592 603 559.265 635.5q-32.736 32.5-79.5 32.5ZM480 856q-138 0-251.5-75T53.145 582.923Q50 578 48.5 570.826 47 563.652 47 556t1.5-14.826Q50 534 53.145 529.077 115 406 228.5 331T480 256q138 0 251.5 75t175.355 198.077Q910 534 911.5 541.174 913 548.348 913 556t-1.5 14.826q-1.5 7.174-4.645 12.097Q845 706 731.5 781T480 856Zm0-300Zm-.169 240Q601 796 702.5 730.5 804 665 857 556q-53-109-154.331-174.5-101.332-65.5-222.5-65.5Q359 316 257.5 381.5 156 447 102 556q54 109 155.331 174.5 101.332 65.5 222.5 65.5Z"/></svg>;
+
 const Announcement: FC<AnnouncementListing> = ({ time, date, platform , channel, postUser, message, href }) => {
     const [isSelect, setIsSelect] = useState<boolean>(false);
     const { lang } = useContext(LangContext);
+    const [ isLinkHover, setIsLinkHover ] = useState<boolean>(false);
 
     return (
         <div className="w-auto max-w-full h-auto min-h-[100px] max-h-[300px] flex flex-col lg:flex-row mb-[25px] gap-[3px] text-base bg-transparent relative z-20">
@@ -84,20 +88,13 @@ const Announcement: FC<AnnouncementListing> = ({ time, date, platform , channel,
                     <GenericTimestamp className="text-secondary-700 font-light text-xs" date={channel} />
                 </h2> }
                 <h2  className={`text-2xl font-semibold  w-full leading-none`}>@{postUser}</h2>
-                
                 <div className="w-full h-auto flex mt-[2px]">
-                    <a href={href}>
-                    <GenericButton className={`text-xs group transition-all flex items-center gap-0 hover:gap-2 active:hover:bg-transparent border-primary-500 text-primary-500 hover:border-secondary-100 hover:text-secondary-100  hover:bg-primary-500`}>
-                    <div className="w-0 h-full group-hover:w-[15px] transition-all overflow-clip">
-                        <svg className={`w-[15px] h-auto fill-transparent group-hover:fill-secondary-50 group-hover:transparent  transition-all group-active:group-hover:fill-secondary-400`} xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M480.118 726Q551 726 600.5 676.382q49.5-49.617 49.5-120.5Q650 485 600.382 435.5q-49.617-49.5-120.5-49.5Q409 386 359.5 435.618q-49.5 49.617-49.5 120.5Q310 627 359.618 676.5q49.617 49.5 120.5 49.5Zm-.353-58Q433 668 400.5 635.265q-32.5-32.736-32.5-79.5Q368 509 400.735 476.5q32.736-32.5 79.5-32.5Q527 444 559.5 476.735q32.5 32.736 32.5 79.5Q592 603 559.265 635.5q-32.736 32.5-79.5 32.5ZM480 856q-138 0-251.5-75T53.145 582.923Q50 578 48.5 570.826 47 563.652 47 556t1.5-14.826Q50 534 53.145 529.077 115 406 228.5 331T480 256q138 0 251.5 75t175.355 198.077Q910 534 911.5 541.174 913 548.348 913 556t-1.5 14.826q-1.5 7.174-4.645 12.097Q845 706 731.5 781T480 856Zm0-300Zm-.169 240Q601 796 702.5 730.5 804 665 857 556q-53-109-154.331-174.5-101.332-65.5-222.5-65.5Q359 316 257.5 381.5 156 447 102 556q54 109 155.331 174.5 101.332 65.5 222.5 65.5Z"/></svg>
-                        
-                    </div>
+                    <StyledAnchor onMouseEnter={() => setIsLinkHover(true)} onMouseLeave={() => setIsLinkHover(false)} href={href} icon={ButtonIcon}>
                     {{
                         "en": "View Post",
-                        "jp": "投稿を見る",
+                        "jp": isLinkHover ? "とうこうをみる" : "投稿を見る",
                     }[lang]}
-                    </GenericButton>
-                    </a>
+                    </StyledAnchor>
                 </div>
             </div>
             
@@ -117,9 +114,9 @@ export default function Announcements() {
             "jp": "すべてのはっぴょは,"
         }[lang]}
         &nbsp;
-        <a className="text-violet-400 underline underline-offset-4 hover:text-violet-700" href="https://discord.gg/T26dc7tc" target="_blank">{{
+        <a className="text-primary-400 underline underline-offset-4 hover:text-violet-700" href="https://discord.gg/T26dc7tc" target="_blank">{{
             "en": "Discord Server",
-            "jp": <>Discordのサーバー&nbsp;</>
+            "jp": <>ディスコードのサーバー&nbsp;</>
         }[lang]}</a>
         {{
             "en": "!",

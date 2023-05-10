@@ -4,10 +4,10 @@ import { doc, getDocs, collection, setDoc, QuerySnapshot, DocumentData, Timestam
 import { db } from "@/config/firebase";
 import { AuthContext } from "@/app/components/context/auth-context";
 import { LangContext } from "@/app/components/context/lang-context";
-import TimelineMini from "@/app/components/core/timeline-mini";
-import GenericTimestamp from "@/app/components/core/generic-timestamp";
-import GenericParagraph from "@/app/components/core/generic-paragraph";
-import GenericButton from "@/app/components/core/generic-button";
+import TimelineMini from "@/app/components/core/TimelineMini";
+import GenericTimestamp from "@/app/components/core/GenericTimestamp";
+import GenericParagraph from "@/app/components/core/GenericParagraph";
+import GenericButton from "@/app/components/core/GenericButton";
 import LangContent from "@/app/components/types/lang-content";
 
 interface EventListing {
@@ -102,15 +102,16 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
                 <div className="w-full flex justify-start mt-[2px] items-center">
                     <GenericButton className={`text-xs group transition-all flex items-center gap-0 hover:gap-2 active:hover:bg-transparent border-primary-500 text-primary-500 hover:border-secondary-100 hover:text-secondary-100  ${!user.events.includes(uid) ? "hover:bg-primary-500 active:hover:border-red-400 active:hover:text-red-400" : "hover:bg-red-400 active:hover:border-secondary-400 active:hover:text-secondary-400"}`} ref={rsvpButtonRef} onClick={!user.uid ? "" : user.events.includes(uid) ? () => unRSVP() : () => RSVP()}>
                     <div className="w-0 h-full group-hover:w-[15px] transition-all overflow-clip">
-                        { !user.events.includes(uid) ?
+                        {user.uid ? !user.events.includes(uid) ?
                             <svg className={`w-[15px] h-auto fill-transparent group-hover:fill-secondary-50 group-hover:transparent  transition-all ${!user.events.includes(uid) ? "group-active:group-hover:fill-red-400" : "group-active:group-hover:fill-secondary-400"}`} xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M321 896q-24 0-42-18t-18-42V736h124V609q-38 3-76-10.5T241 556v-58h-50L60 367q36-34 86-55.5T248 290q30 0 68.5 9.5T385 330v-74h455v535q0 44-30.5 74.5T735 896H321Zm124-160h245v55q0 20 12.5 32.5T735 836q20 0 32.5-12.5T780 791V316H445v57l241 241v43h-43L517 531l-17 20q-13 15-26 23t-29 15v147ZM218 438h83v89q17 11 33.5 16.5T368 549q25 0 51-13.5t38-27.5l17-20-69-69q-32-32-72-50.5T248 350q-27 0-49 6.5T154 374l64 64Zm412 358H321v40h323q-6-6-10-16.5t-4-23.5Zm-309 40v-40 40Z"/></svg>
                             :
                             <svg className={`w-[15px] h-auto fill-transparent group-hover:fill-secondary-50 group-hover:transparent  transition-all ${!user.events.includes(uid) ? "group-active:group-hover:fill-red-400" : "group-active:group-hover:fill-secondary-400"}`} xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m815 1000-64-64H180q-24.75 0-42.375-17.625T120 876V305l-54-54 43-43 749 749-43 43ZM180 876h511L180 364v512Zm660-22-60-60V373H359L202 216h578q24.75 0 42.375 17.625T840 276v578Z"/></svg>
+                        : <svg className={`w-[15px] h-auto fill-transparent group-hover:fill-secondary-50 group-hover:transparent  transition-all ${!user.events.includes(uid) ? "group-active:group-hover:fill-red-400" : "group-active:group-hover:fill-secondary-400"}`} xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M220 976q-24.75 0-42.375-17.625T160 916V482q0-24.75 17.625-42.375T220 422h70v-96q0-78.85 55.606-134.425Q401.212 136 480.106 136T614.5 191.575Q670 247.15 670 326v96h70q24.75 0 42.375 17.625T800 482v434q0 24.75-17.625 42.375T740 976H220Zm0-60h520V482H220v434Zm260.168-140Q512 776 534.5 753.969T557 701q0-30-22.668-54.5t-54.5-24.5Q448 622 425.5 646.5t-22.5 55q0 30.5 22.668 52.5t54.5 22ZM350 422h260v-96q0-54.167-37.882-92.083-37.883-37.917-92-37.917Q426 196 388 233.917 350 271.833 350 326v96ZM220 916V482v434Z"/></svg>
                         }
                     </div>
                     { !user.uid ? {
                         "en": "Login to RSVP",
-                        "jp": "ログインしてRSVPしてください",
+                        "jp": "RSVP にログインする",
                     }[lang] : !user.events.includes(uid) ? "RSVP" : "unRSVP" }
                     </GenericButton>
                 </div>
