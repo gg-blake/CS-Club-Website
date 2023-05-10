@@ -4,10 +4,10 @@ import { doc, getDocs, collection, setDoc, QuerySnapshot, DocumentData, Timestam
 import { db } from "@/config/firebase";
 import { AuthContext } from "@/app/components/context/auth-context";
 import { LangContext } from "@/app/components/context/lang-context";
-import TimelineMini from "@/app/components/core/TimelineMini";
-import GenericTimestamp from "@/app/components/core/GenericTimestamp";
-import GenericParagraph from "@/app/components/core/GenericParagraph";
-import GenericButton from "@/app/components/core/GenericButton";
+import TimelineMini from "@/app/components/core/timeline-mini";
+import GenericTimestamp from "@/app/components/core/generic-timestamp";
+import GenericParagraph from "@/app/components/core/generic-paragraph";
+import GenericButton from "@/app/components/core/generic-button";
 import LangContent from "@/app/components/types/lang-content";
 
 interface EventListing {

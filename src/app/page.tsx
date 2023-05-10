@@ -5,9 +5,9 @@ import Splash from '@/app/components/sections/splash';
 import About from '@/app/components/sections/about';
 import Events from '@/app/components/sections/events';
 import Announcements from '@/app/components/sections/announcements';
-import Timeline from '@/app/components/core/Timeline';
+import Timeline from '@/app/components/core/timeline';
 import Officers from '@/app/components/sections/officers';
-import NavBar from '@/app/components/core/NavBar';
+import NavBar from '@/app/components/core/nav-bar';
 import { AuthContextProvider } from '@/app/components/context/auth-context';
 import { LangContextProvider } from '@/app/components/context/lang-context';
 

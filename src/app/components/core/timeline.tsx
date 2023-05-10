@@ -1,5 +1,5 @@
 import { FC , useContext, useEffect } from 'react';
-import GlitchText from '@/app/components/core/GlitchText';
+import GlitchText from '@/app/components/core/glitch-text';
 import { LangContext } from '@/app/components/context/lang-context';
 
 function TimelineNode({ children , title , marginTop=0 } : { children : JSX.Element , title : {[index:string]: string} , marginTop? : number }) {

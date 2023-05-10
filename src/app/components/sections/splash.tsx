@@ -1,10 +1,10 @@
 import { useEffect , useState , useContext } from 'react';
 import { LangContext } from '@/app/components/context/lang-context';
-import MatrixCanvas from '@/app/components/core/MatrixCanvas';
+import MatrixCanvas from '@/app/components/core/matrix-canvas';
 import LangContent from '@/app/components/types/lang-content';
-import GlitchText from '@/app/components/core/GlitchText';
+import GlitchText from '@/app/components/core/glitch-text';
 import "@/app/globals.css";
-import ThoughtBubble from '../core/ThoughtBubble';
+import ThoughtBubble from '../core/thought-bubble';
 
 export default function Splash({ title, desc } : { title : LangContent , desc : LangContent}) {
     const { lang } = useContext(LangContext);

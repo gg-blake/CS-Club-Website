@@ -1,9 +1,9 @@
 import { FC, useRef, useContext, useState } from 'react';
 import { LangContext } from '@/app/components/context/lang-context';
 import { AuthContext } from '@/app/components/context/auth-context';
-import Login from '@/app/components/core/Login';
-import LanguageSelect from './LanguageSelect';
-import StyledButton from '@/app/components/core/StyledButton';
+import Login from '@/app/components/core/login';
+import LanguageSelect from './language-select';
+import StyledButton from '@/app/components/core/styled-button';
 import LangContent from '@/app/components/types/lang-content';
 // import module styles
 

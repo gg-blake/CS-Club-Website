@@ -1,9 +1,9 @@
 import { FC, useContext } from "react";
-import GenericParagraph from "@/app/components/core/GenericParagraph";
-import {Carousel, CarouselIndexContext, CarouselElement} from "@/app/components/core/GenericCarousel";
+import GenericParagraph from "@/app/components/core/generic-paragraph";
+import {Carousel, CarouselIndexContext, CarouselElement} from "@/app/components/core/generic-carousel";
 import { LangContext } from "@/app/components/context/lang-context";
 import LangContent from "../types/lang-content";
-import ThoughtBubble from "../core/ThoughtBubble";
+import ThoughtBubble from "../core/thought-bubble";
 
 
 const SUBSECTION_CONTENT = [

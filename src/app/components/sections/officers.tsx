@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import ProfileCard from "@/app/components/core/ProfileCard";
-import GenericParagraph from "@/app/components/core/GenericParagraph";
+import ProfileCard from "@/app/components/core/profile-card";
+import GenericParagraph from "@/app/components/core/generic-paragraph";
 import { LangContext } from "@/app/components/context/lang-context";
 
 export default function Officers() {

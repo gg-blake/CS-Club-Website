@@ -1,5 +1,5 @@
 import { useState, FC, useRef, Dispatch, RefObject, ChangeEvent } from "react";
-import GenericButton from "@/app/components/core/GenericButton";
+import GenericButton from "@/app/components/core/generic-button";
 import { useAuth } from "@/app/components/context/auth-context";
 
 

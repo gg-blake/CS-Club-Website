@@ -1,5 +1,5 @@
 import { FC , useRef, useState } from 'react';
-import GlitchText from './GlitchText';
+import GlitchText from './glitch-text';
 
 function TimelineNode({ children , title , marginTop=20 , bullet } : { children : JSX.Element , title? : string , marginTop : number , bullet? : boolean}) {
     const defaultBullet = <div className="absolute translate-x-[-26px] translate-y-[17px] w-[12px] h-[12px] rounded-full border-[2px] border-primary-500 bg-secondary-900" />;

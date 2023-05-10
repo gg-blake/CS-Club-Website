@@ -1,12 +1,12 @@
 import "@/app/module.event-deck.css";
 import { FC, useState, useContext } from "react";
-import TimelineMini from "@/app/components/core/TimelineMini";
-import GenericTimestamp from "@/app/components/core/GenericTimestamp";
-import GenericButton from "@/app/components/core/GenericButton";
+import TimelineMini from "@/app/components/core/timeline-mini";
+import GenericTimestamp from "@/app/components/core/generic-timestamp";
+import GenericButton from "@/app/components/core/generic-button";
 import LangContent from "@/app/components/types/lang-content";
 import { LangContext } from "@/app/components/context/lang-context";
-import ThoughtBubble from "@/app/components/core/ThoughtBubble";
-import StyledAnchor from "@/app/components/core/StyledAnchor";
+import ThoughtBubble from "@/app/components/core/thought-bubble";
+import StyledAnchor from "@/app/components/core/styled-anchor";
 
 
 interface Platform {
