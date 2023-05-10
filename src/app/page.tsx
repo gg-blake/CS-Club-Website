@@ -1,13 +1,13 @@
 'use client';
 import { Inter } from 'next/font/google';
 import React, { useState , useRef, useEffect } from 'react'
-import Splash from '@/app/components/sections/splash';
-import About from '@/app/components/sections/about';
-import Events from '@/app/components/sections/events';
-import Announcements from '@/app/components/sections/announcements';
-import Timeline from '@/app/components/core/timeline';
-import Officers from './components/sections/officers';
-import NavBar from '@/app/components/core/navbar';
+import Splash from '@/app/components/sections/Splash';
+import About from '@/app/components/sections/About';
+import Events from '@/app/components/sections/Events';
+import Announcements from '@/app/components/sections/Announcements';
+import Timeline from '@/app/components/core/Timeline';
+import Officers from './components/sections/Officers';
+import NavBar from '@/app/components/core/NavBar';
 import { AuthContextProvider } from '@/app/components/context/auth-context';
 import { LangContextProvider } from '@/app/components/context/lang-context';
 
@@ -28,28 +28,28 @@ const ABOUT_IMAGE_CAROUSEL_DATA = [
     filename: "/carousel2.jpg",
     alt: {
       "en": "Celebrating the finale of our first group project competition",
-      "jp": "最初のグループプロジェクトコンテストのフィナーレを祝う"
+      "jp": "さいしょ の グループ プロジェクト コンテスト の フィナーレ を いわう"
     }
   },
   {
     filename: "/carousel1.jpg",
     alt: {
       "en": "Our first ever club selfie!",
-      "jp": "初めてのクラブセルフィー！"
+      "jp": " はじめて の クラブ セル フィー！"
     }
   },
   {
     filename: "/carousel3.jpg",
     alt: {
       "en": "Club members collaborating on our latest LeetCode competition problem!",
-      "jp": "最新のLeetCodeコンテストの問題に取り組むクラブメンバー！"
+      "jp": "さいしん の LeetCode コンテスト の もんだい に とりくむ クラブ メンバー！"
     }
   },
   {
     filename: "/carousel4.jpg",
     alt: {
       "en": "Don't worry, the marker came off!",
-      "jp": "心配しないで、マーカーは取れました！"
+      "jp": " しんぱい しないで、 マーカー は とれました！"
     }
   },
 ]
