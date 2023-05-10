@@ -90,7 +90,7 @@ const NavBar: FC<NavBarProps> = ({ className, ids }) => {
             <div className="w-auto flex sm:flex-row gap-3 font-light">
             { NAVIGATION_IDS.map((item: NavItem, index: number) => {
                 return (
-                    <StyledButton key={`nav-item-${item.id}`} className="border-transparent text-lg" onClick={() => smoothScroll(item.id)} icon={item.icon}>
+                    <StyledButton key={`nav-item-${item.id}`} className="border-transparent text-lg text-secondary-100" onClick={() => smoothScroll(item.id)} icon={item.icon}>
                         {item.label[lang]}
                     </StyledButton>
                 )
