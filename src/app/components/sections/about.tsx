@@ -1,9 +1,9 @@
 import { FC, useContext } from "react";
-import GenericParagraph from "@/app/components/core/generic-paragraph";
-import {Carousel, CarouselIndexContext, CarouselElement} from "@/app/components/core/generic-carousel";
+import GenericParagraph from "@/app/components/core/GenericParagraph";
+import {Carousel, CarouselIndexContext, CarouselElement} from "@/app/components/core/GenericCarousel";
 import { LangContext } from "@/app/components/context/lang-context";
 import LangContent from "../types/lang-content";
-import ThoughtBubble from "../core/thought-bubble";
+import ThoughtBubble from "../core/ThoughtBubble";
 
 
 const SUBSECTION_CONTENT = [
@@ -58,7 +58,7 @@ const AboutImage: FC<{image: ImageData, index: number}> = ({ image, index }) => 
     return (
         <>
             <img src={image.filename} alt={`${carouselIndex} index`} style={{width: "300px", height: "300px"}} className={`rounded-md object-cover transition-all ${carouselIndex !== index ? "brightness-[25%] shadow-lg" : ""}`} />
-            <p style={{opacity: carouselIndex === index ? 1 : 0}} className="absolute bottom--[20px] text-sm text-secondary-600 font-normal transition-opacity">{image.alt[lang]}</p>
+            { carouselIndex === index && <GenericParagraph className="absolute bottom--[20px] text-sm font-light text-secondary-400 font-normal transition-opacity">{image.alt[lang]}</GenericParagraph>}
         </>
         
     )
@@ -101,7 +101,7 @@ const About: FC<AboutProps> = ({ images }) => {
                         "en": "Right now we don't have many members, but we're growing!",
                         "jp": "いま、わたしたちはおおくのめんばーをもっていませんが、ふえています！",
                     }[lang] as string}</ThoughtBubble>
-                    <Carousel interval={2000} duration={500} containerWidth={100} containerHeight={200} containerAngle={-45} childWidth={300} childHeight={300}>
+                    <Carousel interval={8000} duration={500} containerWidth={100} containerHeight={200} containerAngle={-45} childWidth={300} childHeight={300}>
                         { images.map((image, index) => (<AboutImage key={`carousel-item-${index}`} image={image} index={index} />)) as CarouselElement[] }
                     </Carousel>
                 </div>
