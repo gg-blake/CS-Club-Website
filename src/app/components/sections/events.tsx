@@ -117,7 +117,7 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
                 </div>
             </div>
             <div className="hidden lg:visible lg:flex w-[2px] h-[92%] mt-3 my-3 mx-2 rounded-full bg-secondary-800 self-center  " />
-            <GenericParagraph className="text-secondary-200 text-[.95rem] md:text-[1.1rem] flex-shrink opacity-50 hover:opacity-100 transition-opacity leading-tight font-light overflow-y-scroll">{ desc[lang] }</GenericParagraph>
+            <GenericParagraph className="text-secondary-200 text-[.95rem] md:text-[1.1rem] flex-shrink opacity-50 hover:opacity-100 transition-opacity leading-tight font-light">{ desc[lang] }</GenericParagraph>
         </div>
     )
 }

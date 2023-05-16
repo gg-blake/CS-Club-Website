@@ -6,10 +6,10 @@ function TimelineNode({ children , title , marginTop=20 , bullet } : { children 
 
     return (
         <>
-        <div className="w-[40px] h-full flex flex-col items-center relative">
+        <div className="w-[40px] h-full hidden md:flex md:flex-col items-center relative">
             <div className="h-full w-[1px] bg-primary-500" />
         </div>
-        <div className={`w-full h-auto transition-all mt-[${marginTop}px]`}>
+        <div className={`h-auto transition-all mt-[${marginTop}px] overflow-x-clip`}>
             <div className='flex items-center relative'>
                 { !bullet && defaultBullet }
                 { title ? <GlitchText className='text-8xl font-bold text-secondary-200'>{ title }</GlitchText> : null }
@@ -36,7 +36,7 @@ const TimelineMini: FC<TimelineItem> = ({ children , className , titles , bullet
 
     return (
         <>
-        <div className={`grid grid-cols-[auto_1fr] ${ className }`}>
+        <div className={`flex flex-col md:grid md:grid-cols-[40px_1fr] ${ className }`}>
             { timelineNodeList.slice(0, 3) }
             { isSelect && timelineNodeList.slice(3) }
         </div>

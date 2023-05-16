@@ -10,6 +10,7 @@ import Officers from '@/app/components/sections/officers';
 import NavBar from '@/app/components/core/nav-bar';
 import { AuthContextProvider } from '@/app/components/context/auth-context';
 import { LangContextProvider } from '@/app/components/context/lang-context';
+import { ViewportProvider } from './components/context/viewport-context';
 
 
 const inter = Inter({ subsets: ['latin'] });
@@ -95,6 +96,7 @@ export default function Home() {
   return (
     <LangContextProvider>
       <AuthContextProvider>
+        <ViewportProvider>
           <NavBar className={`text-lg fixed top-0 bg-secondary-900 p-2 md:pl-6 md:py-1 ${touchingTop ? "bg-opacity-0" : " border-b-[1px] border-secondary-700 bg-opacity-50 backdrop-blur-lg shadow-lg"}`} ids={{"en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP, "es": SECTION_TITLES_ES}} />
           <Splash title={{'en': SPLASH_TITLE_EN, 'jp': SPLASH_TITLE_JP, 'es': SPLASH_TITLE_ES}} desc={{'en': SPLASH_DESC_EN, 'jp': SPLASH_DESC_JP, 'es': SPLASH_TITLE_ES}} />
           <BackgroundProvider backgroundImage={backgroundImage} />
@@ -104,6 +106,7 @@ export default function Home() {
             <Events />
             <Officers />
           </Timeline>
+        </ViewportProvider>
       </AuthContextProvider>
     </LangContextProvider>
   )
