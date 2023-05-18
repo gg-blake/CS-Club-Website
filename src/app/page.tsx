@@ -29,28 +29,28 @@ const ABOUT_IMAGE_CAROUSEL_DATA = [
     filename: "/carousel2.jpg",
     alt: {
       "en": "Celebrating the finale of our first group project competition",
-      "jp": "さいしょ の グループ プロジェクト コンテスト の フィナーレ を いわう"
+      "ja": "さいしょ の グループ プロジェクト コンテスト の フィナーレ を いわう"
     }
   },
   {
     filename: "/carousel1.jpg",
     alt: {
       "en": "Our first ever club selfie!",
-      "jp": " はじめて の クラブ セル フィー！"
+      "ja": " はじめて の クラブ セル フィー！"
     }
   },
   {
     filename: "/carousel3.jpg",
     alt: {
       "en": "Club members collaborating on our latest LeetCode competition problem!",
-      "jp": "さいしん の LeetCode コンテスト の もんだい に とりくむ クラブ メンバー！"
+      "ja": "さいしん の LeetCode コンテスト の もんだい に とりくむ クラブ メンバー！"
     }
   },
   {
     filename: "/carousel4.jpg",
     alt: {
       "en": "Don't worry, the marker came off!",
-      "jp": " しんぱい しないで、 マーカー は とれました！"
+      "ja": " しんぱい しないで、 マーカー は とれました！"
     }
   },
 ]
@@ -97,10 +97,10 @@ export default function Home() {
     <LangContextProvider>
       <AuthContextProvider>
         <ViewportProvider>
-          <NavBar className={`text-lg fixed top-0 bg-secondary-900 p-2 md:pl-6 md:py-1 ${touchingTop ? "bg-opacity-0" : " border-b-[1px] border-secondary-700 bg-opacity-50 backdrop-blur-lg shadow-lg"}`} ids={{"en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP, "es": SECTION_TITLES_ES}} />
-          <Splash title={{'en': SPLASH_TITLE_EN, 'jp': SPLASH_TITLE_JP, 'es': SPLASH_TITLE_ES}} desc={{'en': SPLASH_DESC_EN, 'jp': SPLASH_DESC_JP, 'es': SPLASH_TITLE_ES}} />
+          <NavBar className={`text-lg fixed top-0 bg-secondary-900 p-2 md:pl-6 md:py-1 ${touchingTop ? "bg-opacity-0" : " border-b-[1px] border-secondary-700 bg-opacity-50 backdrop-blur-lg shadow-lg"}`} ids={{"en": SECTION_TITLES_EN, "ja": SECTION_TITLES_JP, "es": SECTION_TITLES_ES}} />
+          <Splash title={{'en': SPLASH_TITLE_EN, 'ja': SPLASH_TITLE_JP, 'es': SPLASH_TITLE_ES}} desc={{'en': SPLASH_DESC_EN, 'ja': SPLASH_DESC_JP, 'es': SPLASH_TITLE_ES}} />
           <BackgroundProvider backgroundImage={backgroundImage} />
-          <Timeline className='w-full h-auto min-h-screen bg-transparent' titles={{ "en": SECTION_TITLES_EN, "jp": SECTION_TITLES_JP, "es": SECTION_TITLES_ES }}>
+          <Timeline className='w-full h-auto min-h-screen bg-transparent' titles={{ "en": SECTION_TITLES_EN, "ja": SECTION_TITLES_JP, "es": SECTION_TITLES_ES }}>
             <About images={ABOUT_IMAGE_CAROUSEL_DATA} />
             <Announcements />
             <Events />

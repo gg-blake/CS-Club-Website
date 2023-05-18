@@ -111,7 +111,7 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
                     </div>
                     { !user.uid ? {
                         "en": "Login to RSVP",
-                        "jp": "RSVP にログインする",
+                        "ja": "RSVP にログインする",
                     }[lang] : !user.events.includes(uid) ? "RSVP" : "unRSVP" }
                     </GenericButton>
                 </div>

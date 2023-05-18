@@ -38,7 +38,7 @@ const Timeline: FC<TimelineItem> = ({ children , className , titles }) => {
         <>
         <img src="/hair_1.svg" className="absolute top-0 h-full object-cover stroke-[5px] stroke-primary-500" />
         <div className={`relative grid grid-cols-[40px_1fr] ${ className }`}>
-            { children.map((child, index) => <TimelineNode key={`timeline-node-${index}`} title={ {'en': titles && titles['en'][index], 'jp': titles && titles['jp'][index], "es": titles && titles['es'][index]} } marginTop={index == 0 ? 100 : 0}>{ child }</TimelineNode>) }
+            { children.map((child, index) => <TimelineNode key={`timeline-node-${index}`} title={ {'en': titles && titles['en'][index], 'ja': titles && titles['ja'][index], "es": titles && titles['es'][index]} } marginTop={index == 0 ? 100 : 0}>{ child }</TimelineNode>) }
         </div>
         </>
     )

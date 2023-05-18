@@ -31,7 +31,7 @@ const NAVIGATION_IDS: NavItem[] = [
     {
         label: {
             "en": "About",
-            "jp": "サークルニツイテ",
+            "ja": "サークルニツイテ",
             "es": "AcercaDe"
         },
         id: "About",
@@ -40,7 +40,7 @@ const NAVIGATION_IDS: NavItem[] = [
     {
         label: {
             "en": "Announcements",
-            "jp": "オシラセ",
+            "ja": "オシラセ",
             "es": "Anuncios"
         },
         id: "Announcements",
@@ -49,7 +49,7 @@ const NAVIGATION_IDS: NavItem[] = [
     {
         label: {
             "en": "Events",
-            "jp": "イベント",
+            "ja": "イベント",
             "es": "Eventos"
         },
         id: "Events",
@@ -58,7 +58,7 @@ const NAVIGATION_IDS: NavItem[] = [
     {
         label: {
             "en": "Officers",
-            "jp": "ヤクイン",
+            "ja": "ヤクイン",
             "es": "Oficiales"
         },
         id: "Officers",
@@ -100,7 +100,7 @@ const NavBar: FC<NavBarProps> = ({ className, ids }) => {
                 {/* English
                 
                 <input
-                onChange={(e) => setLang(e.target.checked ? 'jp' : 'en')}
+                onChange={(e) => setLang(e.target.checked ? 'ja' : 'en')}
                 className="mr-2 h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-neutral-300 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-neutral-100 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary-500 checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary-500 checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary-500 checked:focus:bg-primary-500 checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-neutral-600 dark:after:bg-neutral-400 dark:checked:bg-primary-500 dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
                 type="checkbox"
                 role="switch"
@@ -114,17 +114,17 @@ const NavBar: FC<NavBarProps> = ({ className, ids }) => {
                 }}>
                     <option className="bg-transparent text-gray-700" value="en">English</option>
                     <option className="bg-transparent text-gray-700" value="es">Español</option>
-                    <option className="bg-transparent text-gray-700" value="jp">日本語</option>
+                    <option className="bg-transparent text-gray-700" value="ja">日本語</option>
             </select>*/}
                 {
                     <StyledButton onMouseEnter={() => setLoginMouseHover(true)} onMouseLeave={() => setLoginMouseHover(false)} onClick={user.uid ? () => logOut && logOut() : () => setLoginRevealed(!loginRevealed)} className={`border-transparent text-lg ${!user.uid ? "hover:bg-primary-500 active:hover:bg-transparent active:hover:border-secondary-400 active:hover:text-secondary-400" : "hover:bg-red-400 active:hover:bg-transparent active:hover:border-red-400 active:hover:text-red-400"}`} icon={LOGIN_ICON}>
                     {!user.uid ? {
                     "en": "Login/Register",
-                    "jp": loginMouseHover ? "ログイン/とうろく" : "ログイン/登録",
+                    "ja": loginMouseHover ? "ログイン/とうろく" : "ログイン/登録",
                     "es": "iniciar la sesión/registrarse"
                     }[lang] : {
                         "en": "Log Out",
-                        "jp": loginMouseHover ? "ログインすみ" : "ログイン済み",
+                        "ja": loginMouseHover ? "ログインすみ" : "ログイン済み",
                     }[lang]}
                     </StyledButton>
                 }
@@ -132,11 +132,11 @@ const NavBar: FC<NavBarProps> = ({ className, ids }) => {
                 <div style={{height: user.uid ? "30px" : "0px"}} className="absolute right-0 bottom-0 translate-y-[40px] rounded-l-md text-sm font-light w-auto bg-secondary-900 transition-all overflow-clip px-[20px] flex items-center">
                     {{
                         "en": "Welcome, ",
-                        "jp": "ようこそ、",
+                        "ja": "ようこそ、",
                     }[lang]}
                     {user.uid && user.email}
                 </div>
-                <LanguageSelect availableLanguages={["en", "jp", "es"]} />
+                <LanguageSelect availableLanguages={["en", "ja", "es"]} />
             </div>
         </div>
     )

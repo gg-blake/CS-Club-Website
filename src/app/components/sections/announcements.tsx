@@ -25,12 +25,12 @@ interface AnnouncementListing {
 }
 
 const DISCORD_PLATFORM: Platform = {
-    name: {en: "Discord", jp: "ディスコード"},
+    name: {en: "Discord", ja: "ディスコード"},
     icon: "/discord_logo.png"
 }
 
 const INSTAGRAM_PLATFORM: Platform = {
-    name: {en: "Instagram", jp: "インスタグラム"},
+    name: {en: "Instagram", ja: "インスタグラム"},
     icon: "/instagram_logo.png"
 }
 
@@ -43,7 +43,7 @@ const testAnnouncements: AnnouncementListing[] = [
         postUser: "TheSwiginator",
         message: {
             "en": "Hi all, those who are interested in helping us at our bakesale fundraiser, we will be meeting and setting up around 10 am in Campus Center, on the first floor. Please message me if you plan to come. Thanks!",
-            "jp": "こんにちは、私たちのベイクセールの資金調達に協力したい人は、午前10時ごろにキャンパスセンターの1階で会って設定します。来る予定の場合はメッセージを送ってください。ありがとうございました！",
+            "ja": "こんにちは、私たちのベイクセールの資金調達に協力したい人は、午前10時ごろにキャンパスセンターの1階で会って設定します。来る予定の場合はメッセージを送ってください。ありがとうございました！",
         },
         href: "https://www.google.com"
     },
@@ -55,7 +55,7 @@ const testAnnouncements: AnnouncementListing[] = [
         postUser: "TheSwiginator",
         message: {
             "en": "Hi all, just wanted to give a thanks to everyone who was at our most recent LeetCode competition! The competition was fierce! Next time we plan to run concurrent competitions for graduate and undergraduate students.",
-            "jp": "こんにちは、さいきんのLeetCodeコンテストにさんかしたすべてのひとにかんしゃしたいとおもいます! 次回は、大学院生と学部生の両方の競争を同時に実施する予定です。",
+            "ja": "こんにちは、さいきんのLeetCodeコンテストにさんかしたすべてのひとにかんしゃしたいとおもいます! 次回は、大学院生と学部生の両方の競争を同時に実施する予定です。",
         },
         href: "https://www.google.com"
     },
@@ -92,7 +92,7 @@ const Announcement: FC<AnnouncementListing> = ({ time, date, platform , channel,
                     <StyledAnchor onMouseEnter={() => setIsLinkHover(true)} onMouseLeave={() => setIsLinkHover(false)} href={href} icon={ButtonIcon}>
                     {{
                         "en": "View Post",
-                        "jp": isLinkHover ? "とうこうをみる" : "投稿を見る",
+                        "ja": isLinkHover ? "とうこうをみる" : "投稿を見る",
                     }[lang]}
                     </StyledAnchor>
                 </div>

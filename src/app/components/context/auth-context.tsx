@@ -89,7 +89,7 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
 
   return (
     <AuthContext.Provider value={{ user, setUser, signUp, logIn, logOut }}>
-      <div className={`bg-secondary-900 overflow-x-hidden w-screen ${lang !== "jp" ? LATIN.className : KANA.className}`}>
+      <div className={`bg-secondary-900 overflow-x-hidden w-screen ${lang !== "ja" ? LATIN.className : KANA.className}`}>
       {loading ? null : children}
       </div>
     </AuthContext.Provider>
