@@ -58,6 +58,7 @@ export default function Splash({ title, desc } : { title : LangContent , desc : 
                             {{
                                 'en': 'Find us at UHall, Room 2320',
                                 'ja': 'ゆにばーしてい・ほーるの2320へやにいます',
+                                'es': '¡Encuéntranos en UHall-2320!'
                             }[lang] as string}
                         </ThoughtBubble>
                     </span>
@@ -73,6 +74,7 @@ export default function Splash({ title, desc } : { title : LangContent , desc : 
                 {touching && <><span className="text-base text-secondary-100 animate-pulse font-medium animate-bounce">{{
                     "en": "Scroll to learn more",
                     "ja": "すくろーるしてもっとおしえる",
+                    "es": "Desplázate para aprender más"
                 }[lang]}</span>
                 <svg className="animate-bounce animate-pulse w-6 h-6 text-secondary-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                 </>}
@@ -84,6 +86,7 @@ export default function Splash({ title, desc } : { title : LangContent , desc : 
                         {{
                             "en": "Star me on GitHub",
                             "ja": "ふぉーくみーおんぎっとはぶ!",
+                            "es": "¡Danos una estrella en GitHub!"
                         }[lang]}
                         </span>
                         <span className="group-hover:underline text-xs skew-x-[-6deg] transition-transform">
@@ -95,6 +98,7 @@ export default function Splash({ title, desc } : { title : LangContent , desc : 
                     {{
                         "en": "This is a development build. Do not distribute.",
                         "ja": "これは開発ビルドです。配布しないでください。",
+                        "es": ""
                     }[lang]}
                 </span>
                 

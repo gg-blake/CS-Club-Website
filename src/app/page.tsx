@@ -29,28 +29,32 @@ const ABOUT_IMAGE_CAROUSEL_DATA = [
     filename: "/carousel2.jpg",
     alt: {
       "en": "Celebrating the finale of our first group project competition",
-      "ja": "さいしょ の グループ プロジェクト コンテスト の フィナーレ を いわう"
+      "ja": "さいしょ の グループ プロジェクト コンテスト の フィナーレ を いわう",
+      "es": "Celebrando el final de nuestra primera competencia de proyectos de grupo"
     }
   },
   {
     filename: "/carousel1.jpg",
     alt: {
       "en": "Our first ever club selfie!",
-      "ja": " はじめて の クラブ セル フィー！"
+      "ja": " はじめて の クラブ セル フィー！",
+      "es": "¡Nuestro primer selfie del grupo!"
     }
   },
   {
     filename: "/carousel3.jpg",
     alt: {
       "en": "Club members collaborating on our latest LeetCode competition problem!",
-      "ja": "さいしん の LeetCode コンテスト の もんだい に とりくむ クラブ メンバー！"
+      "ja": "さいしん の LeetCode コンテスト の もんだい に とりくむ クラブ メンバー！",
+      "es": "¡Los miembros del club colaborando en nuestro último competencia de LeetCode!"
     }
   },
   {
     filename: "/carousel4.jpg",
     alt: {
       "en": "Don't worry, the marker came off!",
-      "ja": " しんぱい しないで、 マーカー は とれました！"
+      "ja": " しんぱい しないで、 マーカー は とれました！",
+      "es": "¡No te preocupes, el marcador se borró!"
     }
   },
 ]

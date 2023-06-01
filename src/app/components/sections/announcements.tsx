@@ -25,12 +25,12 @@ interface AnnouncementListing {
 }
 
 const DISCORD_PLATFORM: Platform = {
-    name: {en: "Discord", ja: "ディスコード"},
+    name: {en: "Discord", ja: "ディスコード", es: "Discord",},
     icon: "/discord_logo.png"
 }
 
 const INSTAGRAM_PLATFORM: Platform = {
-    name: {en: "Instagram", ja: "インスタグラム"},
+    name: {en: "Instagram", ja: "インスタグラム", es: "Instagram"},
     icon: "/instagram_logo.png"
 }
 
@@ -43,7 +43,7 @@ const testAnnouncements: AnnouncementListing[] = [
         postUser: "TheSwiginator",
         message: {
             "en": "Hi all, those who are interested in helping us at our bakesale fundraiser, we will be meeting and setting up around 10 am in Campus Center, on the first floor. Please message me if you plan to come. Thanks!",
-            "ja": "こんにちは、私たちのベイクセールの資金調達に協力したい人は、午前10時ごろにキャンパスセンターの1階で会って設定します。来る予定の場合はメッセージを送ってください。ありがとうございました！",
+            "ja": "こんにちは、私たちのベイクセールの資金調達に協力したい人は、午前10時ごろにキャンパスセンターの1階で会って設定します。来る予定の場合はメッセージを送ってください。ありがとうございました！"
         },
         href: "https://www.google.com"
     },
@@ -93,6 +93,7 @@ const Announcement: FC<AnnouncementListing> = ({ time, date, platform , channel,
                     {{
                         "en": "View Post",
                         "ja": isLinkHover ? "とうこうをみる" : "投稿を見る",
+                        "es": "Ver Publicación"
                     }[lang]}
                     </StyledAnchor>
                 </div>
