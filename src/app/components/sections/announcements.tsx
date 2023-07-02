@@ -102,6 +102,10 @@ const Announcement: FC<AnnouncementListing> = ({ time, date, platform , channel,
     )
 }
 
+const fetchAnnouncements = async () => {
+    const response = await fetch("http")
+}
+
 export default function Announcements() {
     const [isSelect, setIsSelect] = useState<boolean>(false);
     const { lang } = useContext(LangContext);
