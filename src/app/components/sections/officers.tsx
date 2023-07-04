@@ -7,11 +7,10 @@ export default function Officers() {
     const { lang } = useContext(LangContext);
 
     return (
-        <div className='w-auto flex flex-row flex-shrink h-auto min-h-[60vh] gap-[75px] px-5 pb-[200px] mt-[50px]'>
+        <div className='w-screen grid auto-cols-max flex-shrink h-auto min-h-[60vh] gap-[75px] px-5 pb-[200px] mt-[50px]'>
             <ProfileCard name={{"en": "John O'Neil", "ja": "ジョン・オーニール"}[lang]} title={{"en": "President", "ja": "社長"}[lang]} src={"/profile_jon.jpg"} links={[
-              { name: {"en":"Twitter", "ja":"ツイッター"}[lang]!, href: "https://twitter.com/" },
-              { name: {"en":"Twitch", "ja":"トーリチュ"}[lang]!, href: "https://www.twitch.tv/" },
-              { name: {"en":"YouTube", "ja":"ユーチューブ"}[lang]!, href: "https://www.youtube.com/" },
+              { name: {"en":"LinkedIn", "ja":"リンクテン"}[lang]!, href: "https://www.linkedin.com/in/jon-carlos-o-neil-b66a83168" },
+              { name: {"en":"Instagram", "ja":"インスタグラム"}[lang]!, href: "https://instagram.com/jon.oneil.169?igshid=OGQ5ZDc2ODk2ZA==" },
             ]}>
               <GenericParagraph className='text-secondary-500 text-base font-light'>
               {{
@@ -21,9 +20,8 @@ export default function Officers() {
               </GenericParagraph>
             </ProfileCard>
             <ProfileCard name={{"en": "Thomas Coffey", "ja": "トマス・コフィー"}[lang]} title={{"en": "Treasurer", "ja": "会計"}[lang]} src={"/thomas_coffey_profile.jpg"} links={[
-              { name: {"en":"Twitter", "ja":"ツイッター"}[lang]!, href: "https://twitter.com/" },
-              { name: {"en":"Twitch", "ja":"トーリチュ"}[lang]!, href: "https://www.twitch.tv/" },
-              { name: {"en":"YouTube", "ja":"ユーチューブ"}[lang]!, href: "https://www.youtube.com/" },
+              { name: {"en":"LinkedIn", "ja":"リンクテン"}[lang]!, href: "https:www.linkedin.com/in/dennis-fuentes-063164209" },
+              { name: {"en":"Instagram", "ja":"インスタグラム"}[lang]!, href: "https://www.instagram.com/dennisfuentes_/" },
             ]}>
               <GenericParagraph className='text-secondary-500 text-base font-light'>
               {{
@@ -32,10 +30,9 @@ export default function Officers() {
               }[lang]}
               </GenericParagraph>
             </ProfileCard>
-            <ProfileCard name={{"en": "Dennis", "ja": "デニス"}[lang]} title={{"en": "Event Coordinator", "ja": "イベントコーディネーター"}[lang]} src={"/dennis_profile.jpg"} links={[
-              { name: {"en":"Twitter", "ja":"ツイッター"}[lang]!, href: "https://twitter.com/" },
-              { name: {"en":"Twitch", "ja":"トーリチュ"}[lang]!, href: "https://www.twitch.tv/" },
-              { name: {"en":"YouTube", "ja":"ユーチューブ"}[lang]!, href: "https://www.youtube.com/" },
+            <ProfileCard name={{"en": "Dennis Fuentes", "ja": "デニス"}[lang]} title={{"en": "Event Coordinator", "ja": "イベントコーディネーター"}[lang]} src={"/dennis_profile.jpg"} links={[
+              { name: {"en":"LinkedIn", "ja":"リンクテン"}[lang]!, href: "https:www.linkedin.com/in/dennis-fuentes-063164209" },
+              { name: {"en":"Instagram", "ja":"インスタグラム"}[lang]!, href: "https://www.instagram.com/dennisfuentes_/" },
             ]}>
               <GenericParagraph className='text-secondary-500 text-base font-light'>
               {{
