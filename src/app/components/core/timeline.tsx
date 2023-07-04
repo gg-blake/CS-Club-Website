@@ -11,11 +11,11 @@ function TimelineNode({ children , title , marginTop=0 } : { children : JSX.Elem
         <div id={title[lang]} className="w-[40px] h-full flex flex-col items-center relative">
             <div className="h-full w-[4px] bg-primary-500" />
         </div>
-        <div className={`h-auto transition-all mt-[${marginTop}px]`}>
+        <div className={`max-w-[calc(100vw_-_40px)] h-auto transition-all mt-[${marginTop}px]`}>
             
-            <div className='flex items-center'>
+            <div className='flex items-center mt-[100px]'>
                 <div className="absolute translate-x-[-30px] w-[20px] h-[20px] rounded-full bg-primary-500" />
-                { title ? <GlitchText className='text-4xl sm:text-6xl md:text-8xl font-bold text-secondary-200 mt-[100px]'>{ title[lang] }</GlitchText> : null }
+                { title ? <GlitchText className='text-4xl sm:text-6xl md:text-8xl font-bold text-secondary-200'>{ title[lang] }</GlitchText> : null }
             </div>
             { children }
         </div>
@@ -31,8 +31,6 @@ interface TimelineItem {
 
 const Timeline: FC<TimelineItem> = ({ children , className , titles }) => {
     const { lang } = useContext(LangContext);
-
-    useEffect(() => {console.log(titles && titles[lang])}, [lang]);
 
     return (
         <>
