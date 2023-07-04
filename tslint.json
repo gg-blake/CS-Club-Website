@@ -1,0 +1,11 @@
+{
+    "extends": ["tslint:recommended"],
+    "rules": {
+      
+    },
+    "exclude": [
+      "node_modules/**/*",
+      "src/app/components/core/glitch-text.tsx"
+    ]
+  }
+  

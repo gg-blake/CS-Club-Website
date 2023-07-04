@@ -18,8 +18,8 @@ const ProfileCard:FC<ProfileCardProps> = ({ children , name="Generic Profile" , 
     
     return (
         <div className={`relative w-[300px] flex flex-col transition-all h-[70vh] gap-2 border-[2px] border-secondary-800 p-3 rounded-md`}>
-            <div className="w-full h-auto">
-                <img src={src} alt={src} className="w-full h-auto rounded-md shadow-xl" />
+            <div className="w-[272px] h-[272px] object-cover overflow-clip flex items-center rounded-md">
+                <img src={src} alt={src} className="w-full h-auto shadow-xl" />
             </div>
             <span className="leading-tight text-secondary-200">
                 <h1 className="text-3xl font-semibold">{name}</h1>

@@ -89,7 +89,7 @@ export default function MatrixCanvas({ scroll } : { scroll: number }) {
         
 
         // Get the canvas node and the drawing context
-        const canvas = document.getElementById('canv-jp') as HTMLCanvasElement;
+        const canvas = document.getElementById('canv-ja') as HTMLCanvasElement;
 
         if (!canvas) return;
 
@@ -122,7 +122,7 @@ export default function MatrixCanvas({ scroll } : { scroll: number }) {
             // for each column put a random character at the end
             ypos.forEach((y, ind) => {
                 // generate a random character
-                const num = getRandomInt(0xfeff3041, 0xfeff30fe);
+                const num = getRandomInt(0xfeff30A0, 0xfeff30FF);
                 const text = String.fromCharCode(num);
 
             
@@ -214,7 +214,7 @@ export default function MatrixCanvas({ scroll } : { scroll: number }) {
     return (
         <div className="absolute w-full h-full flex z-10">
             { lang === 'en' && <canvas id="canv-en" width={canvasWidth} height={canvasHeight} className="absolute w-full h-full z-10" />}
-            { lang === 'jp' && <canvas id="canv-jp" width={canvasWidth} height={canvasHeight} className="absolute w-full h-full z-10" />}
+            { lang === 'ja' && <canvas id="canv-ja" width={canvasWidth} height={canvasHeight} className="absolute w-full h-full z-10" />}
             {lang === 'es' && <canvas id="canv-es" width={canvasWidth} height={canvasHeight} className="absolute w-full h-full z-10" />}
             <div className={`matrix absolute w-full h-full  z-20 transition-all bg-gradient-to-b from-transparent to-[#000000]`}></div>
         </div>

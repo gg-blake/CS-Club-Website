@@ -6,10 +6,10 @@ function TimelineNode({ children , title , marginTop=20 , bullet } : { children 
 
     return (
         <>
-        <div className="w-[40px] h-full flex flex-col items-center relative">
+        <div className="w-[40px] h-full hidden md:flex md:flex-col items-center relative">
             <div className="h-full w-[1px] bg-primary-500" />
         </div>
-        <div className={`w-full h-auto transition-all mt-[${marginTop}px]`}>
+        <div className={`h-auto transition-all mt-[${marginTop}px] overflow-x-clip`}>
             <div className='flex items-center relative'>
                 { !bullet && defaultBullet }
                 { title ? <GlitchText className='text-8xl font-bold text-secondary-200'>{ title }</GlitchText> : null }
@@ -32,11 +32,11 @@ interface TimelineItem {
 const TimelineMini: FC<TimelineItem> = ({ children , className , titles , bulletType=false }) => {
     const [isSelect, setSelect] = useState<boolean>(false);
 
-    let timelineNodeList = children.map((child, index) => <TimelineNode title={ titles && titles[index] } marginTop={(index == 0 ? 30 : 0)} bullet={bulletType}>{ child }</TimelineNode>);
+    let timelineNodeList = children.map((child, index) => <TimelineNode key={`timeline-mini-node-${index}`} title={ titles && titles[index] } marginTop={(index == 0 ? 30 : 0)} bullet={bulletType}>{ child }</TimelineNode>);
 
     return (
         <>
-        <div className={`grid grid-cols-[auto_1fr] ${ className }`}>
+        <div className={`flex flex-col md:grid md:grid-cols-[40px_1fr] ${ className }`}>
             { timelineNodeList.slice(0, 3) }
             { isSelect && timelineNodeList.slice(3) }
         </div>

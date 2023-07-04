@@ -1,37 +1,44 @@
+import { useContext } from "react";
 import ProfileCard from "@/app/components/core/profile-card";
 import GenericParagraph from "@/app/components/core/generic-paragraph";
+import { LangContext } from "@/app/components/context/lang-context";
 
 export default function Officers() {
+    const { lang } = useContext(LangContext);
+
     return (
-        <div className='w-auto grid grid-flow-row grid-rows-1 flex-shrink h-auto min-h-[60vh] gap-[75px] px-5 pt-12 mt-5'>
-            <ProfileCard name="Sleepy Joe" title="President" src={"/sleepyjoe.jpg"} links={[
-              { name: "Twitter", href: "https://twitter.com/realDonaldTrump" },
-              { name: "Twitch", href: "https://www.twitch.tv/sleepyjoe" },
-              { name: "YouTube", href: "https://www.youtube.com/channel/UC7QXJ4J8D5BYVdUZ5JIHImQ" },
+        <div className='w-screen grid auto-cols-max flex-shrink h-auto min-h-[60vh] gap-[75px] px-5 pb-[200px] mt-[50px]'>
+            <ProfileCard name={{"en": "John O'Neil", "ja": "ジョン・オーニール"}[lang]} title={{"en": "President", "ja": "社長"}[lang]} src={"/profile_jon.jpg"} links={[
+              { name: {"en":"LinkedIn", "ja":"リンクテン"}[lang]!, href: "https://www.linkedin.com/in/jon-carlos-o-neil-b66a83168" },
+              { name: {"en":"Instagram", "ja":"インスタグラム"}[lang]!, href: "https://instagram.com/jon.oneil.169?igshid=OGQ5ZDc2ODk2ZA==" },
             ]}>
               <GenericParagraph className='text-secondary-500 text-base font-light'>
-              Online YouTube Gaming personality recognized as a skilled player of Call of Duty Zombies, with a particular affinity for the game mode.
-              In Sleepy Joe's online gaming circles, he is known for his strategic thinking and calm demeanor under pressure, which he developed during his decades-long career in politics. He is also recognized for his ability to work well with others, often serving as the de facto team leader during co-op matches.
-              One notable feature of Sleepy Joe's online gaming persona is his penchant for political humor. He enjoys making quips about current events and political figures, often referencing his former political rivals such as Donald Trump and Barack Obama in his in-game banter.
-              Despite his busy schedule as the President of the United States, Sleepy Joe finds time to unwind by playing video games, and he is known for his dedication to the hobby. His fellow gamers respect him not only for his skills but also for his ability to balance his responsibilities as a world leader with his personal interests.
+              {{
+                "en": "Hi, I’m Jon. I started the Computer Science Club in my Sophomore year because I wanted a place for CS people to socialize. Seeing the club grow and develop has been the highlight of my undergrad. You should stop by and get involved :)",
+                "ja": "こんにちは、私はジョンです。私は2ねんせいのときにこんぴゅーたーさいえんすくらぶをたちあげました。くらぶがせいちょうしはってんするのをみるのはわたしのだいがくせいかつのはいらいとでした。ぜひたちよってさんかしてください :)",
+              }[lang]}
               </GenericParagraph>
             </ProfileCard>
-            <ProfileCard name="Jordan Peterson" title="Vice President" src={"/jordan.jpg"} links={[
-              { name: "Twitter", href: "https://twitter.com/jordanbpeterson" },
-              { name: "Twitch", href: "https://www.twitch.tv/jordanpeterson" },
-              { name: "YouTube", href: "https://www.youtube.com/channel/UC7QXJ4J8D5BYVdUZ5JIHImQ" },
+            <ProfileCard name={{"en": "Thomas Coffey", "ja": "トマス・コフィー"}[lang]} title={{"en": "Treasurer", "ja": "会計"}[lang]} src={"/thomas_coffey_profile.jpg"} links={[
+              { name: {"en":"LinkedIn", "ja":"リンクテン"}[lang]!, href: "https:www.linkedin.com/in/dennis-fuentes-063164209" },
+              { name: {"en":"Instagram", "ja":"インスタグラム"}[lang]!, href: "https://www.instagram.com/dennisfuentes_/" },
             ]}>
               <GenericParagraph className='text-secondary-500 text-base font-light'>
-              Canadian psychologist, author, and media commentator. He began to receive widespread attention in the late 2010s for his views on cultural and political issues, often described as conservative. Peterson has described himself as a classic British liberal and a traditionalist.
+              {{
+                "en": "Hello, I’m Thomas Coffey, I helped Jon start this club in order to give members of the cs community at UMB, as well as those interested in cs too, a place to connect and collaborate with their fellow students. I hope to see our revival of this club continue to grow and expand long after we leave UMB.",
+                "ja": "こんにちは、私はトーマス コフィーです。私は、UMB の CS コミュニティのメンバーや、CS に興味のある人たちに、他の学生とつながり、協力する場所を提供するために、ジョンのこのクラブの立ち上げを手伝いました。私たちがUMBを去った後も、このクラブの復活がさらに成長し、拡大し続けることを願っています。"
+              }[lang]}
               </GenericParagraph>
             </ProfileCard>
-            <ProfileCard name="Elon Musk" title="Treasurer" src={"/elon.jpg"} links={[
-              { name: "Twitter", href: "https://twitter.com/elonmusk" },
-              { name: "Twitch", href: "https://www.twitch.tv/elonmusk" },
-              { name: "YouTube", href: "https://www.youtube.com/channel/UC7QXJ4J8D5BYVdUZ5JIHImQ" },
+            <ProfileCard name={{"en": "Dennis Fuentes", "ja": "デニス"}[lang]} title={{"en": "Event Coordinator", "ja": "イベントコーディネーター"}[lang]} src={"/dennis_profile.jpg"} links={[
+              { name: {"en":"LinkedIn", "ja":"リンクテン"}[lang]!, href: "https:www.linkedin.com/in/dennis-fuentes-063164209" },
+              { name: {"en":"Instagram", "ja":"インスタグラム"}[lang]!, href: "https://www.instagram.com/dennisfuentes_/" },
             ]}>
               <GenericParagraph className='text-secondary-500 text-base font-light'>
-              a business magnate and investor. He is the founder, CEO and chief engineer of SpaceX; angel investor, CEO and product architect of Tesla, Inc.; owner and CEO of Twitter, Inc.; founder of the Boring Company; co-founder of Neuralink and OpenAI; and president of the philanthropic Musk Foundation. With an estimated net worth of around $192 billion as of March 27, 2023, primarily from his ownership stakes in Tesla and SpaceX, Musk is the second-wealthiest person in the world, according to both the Bloomberg Billionaires Index and Forbes's real-time billionaires list.
+              {{
+                "en": "Hey, my name is Dennis and I am the current Computer Science Club event coordinator. Come check out some of our events and introduce yourself to the club! My personal interests in Computer Science lie in Cyber Defense.",
+                "ja": "こんにちは、私の名前はデニスです。現在コンピューター サイエンス クラブのイベント コーディネーターを務めています。私たちのイベントをいくつかチェックして、クラブについて自己紹介してください!コンピューターサイエンスにおける私の個人的な興味はサイバー防御にあります。"
+              }[lang]}
               </GenericParagraph>
             </ProfileCard>
         </div>

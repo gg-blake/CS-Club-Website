@@ -11,4 +11,6 @@ const GenericButton = React.forwardRef(({ children , className , onClick }: { ch
     )
 });
 
+GenericButton.displayName = "GenericButton";
+
 export default GenericButton;
