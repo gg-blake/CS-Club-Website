@@ -87,17 +87,6 @@ const AboutSubsection: FC<{title: LangContent, desc: LangContent, className?: st
 const About: FC<AboutProps> = ({ images }) => {
     const { lang } = useContext(LangContext);
 
-    useEffect(() => {
-        window.addEventListener('resize', () => {
-            console.log(window.innerWidth);
-        })
-        return () => {
-            window.removeEventListener('resize', () => {
-                console.log(window.innerWidth);
-            })
-        }
-    }, [])
-
     return (
         <div className='h-auto w-full max-w-[calc(100vw_-_40px)] flex flex-col lg:grid lg:grid-cols-2 gap-[200px] lg:gap-4 mt-4 '>
             <div>
