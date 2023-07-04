@@ -1,5 +1,6 @@
 'use client';
 import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import React, { useState , useRef, useEffect } from 'react'
 import Splash from '@/app/components/sections/splash';
 import About from '@/app/components/sections/about';
@@ -13,7 +14,6 @@ import { LangContextProvider } from '@/app/components/context/lang-context';
 import { ViewportProvider } from './components/context/viewport-context';
 
 
-const inter = Inter({ subsets: ['latin'] });
 const SECTION_TITLES_EN = ["About", "Announcements",  "Events", "Officers"];
 const SPLASH_TITLE_EN = "CS CLUB";
 const SPLASH_DESC_EN = "UMass Boston's official center for technology-driven students!";
@@ -104,7 +104,7 @@ export default function Home() {
           <NavBar className={`text-lg fixed top-0 bg-secondary-900 p-2 md:pl-6 md:py-1 ${touchingTop ? "bg-opacity-0" : " border-b-[1px] border-secondary-700 bg-opacity-50 backdrop-blur-lg shadow-lg"}`} ids={{"en": SECTION_TITLES_EN, "ja": SECTION_TITLES_JP, "es": SECTION_TITLES_ES}} />
           <Splash title={{'en': SPLASH_TITLE_EN, 'ja': SPLASH_TITLE_JP, 'es': SPLASH_TITLE_ES}} desc={{'en': SPLASH_DESC_EN, 'ja': SPLASH_DESC_JP, 'es': SPLASH_TITLE_ES}} />
           <BackgroundProvider backgroundImage={backgroundImage} />
-          <Timeline className='w-full h-auto min-h-screen bg-transparent' titles={{ "en": SECTION_TITLES_EN, "ja": SECTION_TITLES_JP, "es": SECTION_TITLES_ES }}>
+          <Timeline className='w-full max-w-[calc(100vw)] h-auto min-h-screen bg-transparent' titles={{ "en": SECTION_TITLES_EN, "ja": SECTION_TITLES_JP, "es": SECTION_TITLES_ES }}>
             <About images={ABOUT_IMAGE_CAROUSEL_DATA} />
             <Announcements />
             <Events />
