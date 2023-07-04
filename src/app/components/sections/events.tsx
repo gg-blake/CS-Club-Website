@@ -37,6 +37,7 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
     const { user, setUser } = useContext(AuthContext);
     const rsvpButtonRef = useRef<HTMLDivElement>(null);
     const { lang } = useContext(LangContext);
+    const [ needRefresh, setNeedRefresh ] = useState<boolean>(false);
 
     const pad = (n: number) => {
         return ("0" + n).slice(-2);
@@ -61,6 +62,7 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
             who: [...who, user.uid],
         }
         await setDoc(doc(db, "events", uid), updatedEvent);
+        setNeedRefresh(true);
     }
 
     const unRSVP = async () => {
@@ -79,6 +81,7 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
             who: who.filter((u) => u !== user.uid),
         }
         await setDoc(doc(db, "events", uid), updatedEvent);
+        setNeedRefresh(true);
     }
 
     const smoothScroll = (id: string) => {
@@ -115,9 +118,10 @@ const Event: FC<EventProps & LoginPromptState> = ({ uid, data, isLoginPrompt, se
                     }[lang] : !user.events.includes(uid) ? "RSVP" : "unRSVP" }
                     </GenericButton>
                 </div>
+                { needRefresh && <p className="max-w-[200px] text-[.5rem] leading-tight opacity-50 text-yellow-300">You will need to refresh before you RSVP/UNRSVP this event again!</p> }
             </div>
             <div className="hidden lg:visible lg:flex w-[2px] h-[92%] mt-3 my-3 mx-2 rounded-full bg-secondary-800 self-center  " />
-            <GenericParagraph className="text-secondary-200 text-[.95rem] md:text-[1.1rem] flex-shrink opacity-50 hover:opacity-100 transition-opacity leading-tight font-light">{ desc[lang] }</GenericParagraph>
+            <GenericParagraph className="text-secondary-200 text-right text-[.95rem] md:text-[1.1rem] flex-shrink opacity-50 hover:opacity-100 transition-opacity leading-tight font-light">{ desc[lang] }</GenericParagraph>
         </div>
     )
 }
